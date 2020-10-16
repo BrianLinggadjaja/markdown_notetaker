@@ -1,0 +1,109 @@
+/*
+    Font Family
+*/
+$font-family-base: Arial, Helvetica, sans-serif;
+$font-family-header: $font-family-base;
+$font-family-sub-header: $font-family-base;
+$font-family-normal: $font-family-base;
+
+/*
+    Fluid Typography
+*/
+$min-viewport-width: 320px;
+$max-viewport-width: 1200px;
+
+$font-size-min: 16px;
+$font-size-max: 20px;
+
+
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+/*
+    Colors
+*/
+
+// Standalone Colors
+$color-primary:#313638;
+$color-primary-invert: findColorInvert($color-primary);
+
+$color-secondary: #471F39;
+$color-secondary-invert: findColorInvert($color-secondary);
+
+$color-accent: #E03C81;
+$color-accent-invert: findColorInvert($color-accent);
+
+// Handle Bar
+$color-handle-background: #0F0F0F;
+$color-handle-text: #E03C81;
+
+// Left Navigation Panel
+$color-navigation-background: #191919;
+$color-navigation-background-text: findColorInvert($color-navigation-background);
+
+$color-navigation-highlight: #313638;
+$color-navigation-highlight-text: findColorInvert($color-navigation-highlight);
+
+$color-navigation-accent: #471F39;
+$color-navigation-accent-text: findColorInvert($color-navigation-background);
+
+// Editor Panel
+$color-editor-background: #2A2A2A;
+$color-editor-background-text: findColorInvert($color-navigation-background);
+
+$color-editor-alt: #1C1C1C;
+$color-editor-alt-text: findColorInvert($color-editor-alt);
+
+// Preview Panel
+$color-preview-background: #383838;
+$color-preview-text: findColorInvert($color-preview-background);
+
+
+/*
+    Buefy Customization
+*/
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+    // Base
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($color-primary, $color-primary-invert),
+    "secondary": ($color-secondary, $color-secondary-invert),
+    "accent": ($color-accent, $color-accent-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert),
+
+    // Handle Bar
+    "handle-background": ($color-handle-background, $color-handle-text),
+
+    // Left Navigation Panel
+    "navigation-background": ($color-navigation-background, $color-navigation-background-text),
+    "navigation-highlight": ($color-navigation-highlight, $color-navigation-highlight-text),
+    "navigation-accent": ($color-navigation-accent, $color-navigation-accent-text),
+
+    // Editor Panel
+    "editor-background": ($color-editor-background, $color-editor-background-text),
+    "editor-alt": ($color-editor-alt, $color-editor-alt-text),
+
+    // Preview Panel
+    "preview-background": ($color-preview-background, $color-preview-text),
+);
+
+// Links
+$link: $color-accent;
+$link-invert: darken($color-accent, 25%);
+$link-focus-border: lighten($color-accent, 25%);
+
+// Other
+$navbar-height: 2rem;
+$body-overflow-y: auto;
+$body-min-width: 320px;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
