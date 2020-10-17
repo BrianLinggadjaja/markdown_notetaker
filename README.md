@@ -15,7 +15,7 @@ Build application for standard web SPA
 Manually lint & fix files
 > yarn lint
 
-Serve application w/ Hot Reload
+Serve application w/ Hot Reload (Requires an xServer interface like VcXsrv)
 > yarn electron:serve
 
 Build standard application bundle
