@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <div class="columns">
-      <file-storage />
+      <note-sorter />
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import FileStorage from './components/FileStorage'
+import NoteSorter from './components/NoteSorter'
 
 export default {
   components: {
-    FileStorage
+    NoteSorter
   }
 }
 </script>
