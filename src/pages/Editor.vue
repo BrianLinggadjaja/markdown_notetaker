@@ -1,11 +1,11 @@
 <template>
-  <main class="column is-10 hero is-fullheight-with-navbar is-primary">
+  <main class="column is-10">
     <div class="editor columns">
-      <section class="column is-3 hero-body">
+      <section class="column is-3">
         <note-selector />
       </section>
 
-      <section class="column is-9 hero-body">
+      <section class="column is-9">
         <editor-preview />
       </section>
     </div>
@@ -23,3 +23,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.editor {
+  height: 100vh;
+}
+</style>

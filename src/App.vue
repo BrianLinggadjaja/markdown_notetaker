@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <div class="columns">
-      <note-sorter />
-      <router-view></router-view>
-    </div>
+  <div id="app" class="columns">
+    <note-sorter />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -18,6 +16,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #app {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+
   .columns {
     margin: 0;
   }
