@@ -8,6 +8,10 @@
       <section class="column is-9">
         <editor-preview />
       </section>
+
+      <section class="column is-9">
+        <editor-toolbar />
+      </section>
     </div>
   </main>
 </template>
@@ -15,11 +19,13 @@
 <script>
 import NoteSelector from './../components/Editor/NoteSelector'
 import EditorPreview from './../components/Editor/EditorPreview'
+import EditorToolbar from './../components/Editor/EditorToolbar'
 
 export default {
   components: {
     NoteSelector,
-    EditorPreview
+    EditorPreview,
+    EditorToolbar
   }
 }
 </script>
