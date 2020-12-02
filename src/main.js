@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import App from './App.vue'
@@ -10,6 +11,7 @@ import Buefy from 'buefy'
 import '@/scss/_base.scss'
 
 // Vue Configuration
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Buefy)
 Vue.config.productionTip = false
