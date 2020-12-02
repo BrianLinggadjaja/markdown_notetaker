@@ -8,10 +8,10 @@
 html,
 body {
     // Fluid Typography
-    background-color: $color-primary;
-    color: $color-primary-invert;
+    background-color: $color-background;
+    color: $color-background-invert;
     @include calc-fluid-font-size($min-viewport-width, $max-viewport-width, $font-size-min, $font-size-max);
-    font-family: $font-family-base;
+    font-family: $font-family-normal;
     position: relative;
     min-height: 100vh;
     min-width: 100vw;
@@ -26,7 +26,7 @@ h3 {
 
 h2,
 h3 {
-    font-family: $font-family-sub-header;
+    font-family: $font-family-header;
 }
 
 p {
