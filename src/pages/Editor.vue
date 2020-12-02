@@ -1,9 +1,7 @@
 <template>
   <main class="column is-10">
     <div class="editor columns">
-      <section class="column is-3">
-        <note-selector />
-      </section>
+      <note-selector />
 
       <section class="column is-9">
         <editor-preview />

@@ -37,6 +37,7 @@ $color-secondary-invert: findColorInvert($color-secondary);
 
 $color-accent: #FFC61B;
 $color-accent-invert: findColorInvert($color-accent);
+$color-accent-border: darken($color-accent, 25%);
 
 $color-background: #FFFFFF;
 $color-background-invert: findColorInvert($color-background);
