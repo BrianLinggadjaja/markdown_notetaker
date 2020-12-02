@@ -1,5 +1,5 @@
 <template>
-  <main class="column is-10 hero is-fullheight-with-navbar is-primary">
+  <main class="column is-10 hero is-fullheight-with-navbar is-background">
     <div class="hero-body">
       <div class="container">
         <h1>File Explorer</h1>

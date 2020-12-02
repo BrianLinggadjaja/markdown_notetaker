@@ -34,3 +34,10 @@
     </b-menu-list>
   </b-menu>
 </template>
+
+<style lang="scss" scoped>
+  .note-selector {
+    background-color: $color-secondary;
+    color: $color-secondary-invert;
+  }
+</style>
