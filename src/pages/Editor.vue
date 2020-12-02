@@ -3,6 +3,7 @@
     <div class="editor columns">
       <note-selector />
 
+      <div id="test"></div>
       <section class="column is-9">
         <editor-preview />
       </section>
