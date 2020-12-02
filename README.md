@@ -1,4 +1,4 @@
-# vue-electron-template
+# Simple Markdown Notetaker
 
 ## Project Setup
 Install dependencies
