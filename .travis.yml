@@ -8,7 +8,7 @@ branches:
 
 after_success:
   # Remove all directories/files not matching 'dist' & '.git'
-  - find . ! \( -name 'dist' -o -name '.git' \)
+  - find . ! \( -name 'dist' -o -name '.git' \) -delete
   # Move dist dir files outside to current context
   - mv ./dist/* ./ && rmdir dist
   # Change git origin to target repo
