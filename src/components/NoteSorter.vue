@@ -5,8 +5,8 @@
 </template>
 
 <style lang="scss" scoped>
-  .note-sorter {
-    background-color: $color-primary;
-    color: $color-primary-invert;
-  }
+.note-sorter {
+  background-color: $color-primary;
+  color: $color-primary-invert;
+}
 </style>
