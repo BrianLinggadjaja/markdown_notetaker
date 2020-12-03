@@ -10,7 +10,7 @@ after_success:
   # Run build command
   - yarn build
   # Remove all directories/files not matching 'dist' & '.git'
-  - find . -maxdepth 1 ! \( -name 'dist' -o -name '.git' \) -exec rm -rf {} \;
+  - find ./ -maxdepth 1 ! \( -name 'dist' -o -name '.git' \) -exec rm -rf {./} \;
   # Move dist dir files outside to current context
   - mv ./dist/* ./ && rmdir dist
   # Change git origin to target repo
