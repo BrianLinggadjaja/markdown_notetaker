@@ -14,7 +14,7 @@ after_success:
   # Move dist dir files outside to current context
   - mv ./dist/* ./ && rmdir dist
   # Change git origin to target repo
-  - git remote rm origin && git remote add origin https://username:${GH_TOKEN}@github.com/${GH_TARGET-REPO}
+  - git remote rm origin && git remote add origin https://username:${GH_TOKEN}@github.com/${GH_TARGET_REPO}
   - git add .
   - git commit -m "Completed Travis-CI automated build"
   - git push -fq origin ${GIT_BRANCH}
