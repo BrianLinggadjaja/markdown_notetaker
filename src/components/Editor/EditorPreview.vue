@@ -5,7 +5,9 @@
             <b-navbar-item>
                 <b-button size="is-small">New</b-button>
                 <b-button size="is-small">Tag</b-button>
-                <b-button size="is-small">Delete</b-button>
+            </b-navbar-item>
+            <b-navbar-item class="buttons is-right">
+                <b-button size="is-small" class="button is-danger">Delete</b-button>
             </b-navbar-item>
         </template>
         <template slot="end">

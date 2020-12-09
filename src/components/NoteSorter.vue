@@ -1,6 +1,13 @@
 <template>
-  <aside class="note-sorter column is-primary is-2">
-    <p>Note Sorter</p>
+  <aside class="note-sorter menu column is-primary is-2">
+    <p class="menu-list">Note Sorter</p>
+    <ul class="menu-list">
+      <li><a>All Notes</a></li>
+      <li><a>Notebooks</a></li>
+      <li><a>Tags</a></li>
+      <li><a>Categories</a></li>
+      <li><a>Bookmarked</a></li>
+    </ul>
   </aside>
 </template>
 
