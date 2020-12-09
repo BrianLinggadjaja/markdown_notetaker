@@ -36,7 +36,9 @@ const mutations = {
 
 // Getters
 const getters = {
-  getShoppingCart: (state) => { return state.shoppingCart }
+  getShoppingCart: state => {
+    return state.shoppingCart
+  }
 }
 
 // Module Export

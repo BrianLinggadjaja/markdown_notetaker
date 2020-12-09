@@ -1,24 +1,36 @@
 // Removes any trailing unit
 @function strip-unit($value) {
-    @return $value / ($value * 0 + 1);
+  @return $value / ($value * 0 + 1);
 }
 
 // Calculates a fluid font size
-@mixin calc-fluid-font-size($min-viewport-width, $max-viewport-width, $font-size-min, $font-size-max) {
-    $u1: unit($min-viewport-width);
-    $u2: unit($max-viewport-width);
-    $u3: unit($font-size-min);
-    $u4: unit($font-size-max);
+@mixin calc-fluid-font-size(
+  $min-viewport-width,
+  $max-viewport-width,
+  $font-size-min,
+  $font-size-max
+) {
+  $u1: unit($min-viewport-width);
+  $u2: unit($max-viewport-width);
+  $u3: unit($font-size-min);
+  $u4: unit($font-size-max);
 
-    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-        & {
-        font-size: $font-size-min;
-        @media screen and (min-width: $min-viewport-width) {
-            font-size: calc(#{$font-size-min} + #{strip-unit($font-size-max - $font-size-min)} * ((100vw - #{$min-viewport-width}) / #{strip-unit($max-viewport-width - $min-viewport-width)}));
-        }
-        @media screen and (min-width: $max-viewport-width) {
-            font-size: $font-size-max;
-        }
-        }
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $font-size-min;
+      @media screen and (min-width: $min-viewport-width) {
+        font-size: calc(
+          #{$font-size-min} + #{strip-unit($font-size-max - $font-size-min)} *
+            (
+              (100vw - #{$min-viewport-width}) / #{strip-unit(
+                  $max-viewport-width - $min-viewport-width
+                )}
+            )
+        );
+      }
+      @media screen and (min-width: $max-viewport-width) {
+        font-size: $font-size-max;
+      }
     }
+  }
 }

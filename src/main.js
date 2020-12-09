@@ -29,7 +29,7 @@ const router = new VueRouter({
 })
 
 // Updates Vue Router Title on "Page" Change
-router.afterEach((to) => {
+router.afterEach(to => {
   Vue.nextTick(() => {
     document.title = to.meta.title
   })

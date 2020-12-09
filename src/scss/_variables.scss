@@ -2,15 +2,12 @@
     * Font Family
     */
 
-
 $font-family-header: 'Lato', sans-serif;
 $font-family-normal: Helvetica, sans-serif;
 
-
 /*
     * Fluid Typography
-    */ 
-
+    */
 
 $min-viewport-width: 320px;
 $max-viewport-width: 1200px;
@@ -18,30 +15,26 @@ $max-viewport-width: 1200px;
 $font-size-min: 16px;
 $font-size-max: 20px;
 
-
 // Import Bulma's core
-@import "~bulma/sass/utilities/_all";
-
+@import '~bulma/sass/utilities/_all';
 
 /*
     * Colors
     */
 
-
 // Primary
-$color-primary:#20272C;
+$color-primary: #20272c;
 $color-primary-invert: findColorInvert($color-primary);
 
-$color-secondary: #F7F7F7;
+$color-secondary: #f7f7f7;
 $color-secondary-invert: findColorInvert($color-secondary);
 
-$color-accent: #FFC61B;
+$color-accent: #ffc61b;
 $color-accent-invert: findColorInvert($color-accent);
 $color-accent-border: darken($color-accent, 25%);
 
-$color-background: #FFFFFF;
+$color-background: #ffffff;
 $color-background-invert: findColorInvert($color-background);
-
 
 /*
     * Buefy Customization
@@ -49,21 +42,19 @@ $color-background-invert: findColorInvert($color-background);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
-    // Base
-    "white": ($white, $black),
-    "black": ($black, $white),
-    "light": ($light, $light-invert),
-    "dark": ($dark, $dark-invert),
-    // Design System
-    "primary": ($color-primary, $color-primary-invert),
-    "secondary": ($color-secondary, $color-secondary-invert),
-    "accent": ($color-accent, $color-accent-invert),
-    "background": ($color-background, $color-background-invert),
-    // Action Colors
-    "info": ($info, $info-invert),
-    "success": ($success, $success-invert),
-    "warning": ($warning, $warning-invert),
-    "danger": ($danger, $danger-invert)
+  // Base
+    'white': ($white, $black),
+  'black': ($black, $white),
+  'light': ($light, $light-invert),
+  'dark': ($dark, $dark-invert),
+  // Design System 'primary': ($color-primary, $color-primary-invert),
+  'secondary': ($color-secondary, $color-secondary-invert),
+  'accent': ($color-accent, $color-accent-invert),
+  'background': ($color-background, $color-background-invert),
+  // Action Colors 'info': ($info, $info-invert),
+  'success': ($success, $success-invert),
+  'warning': ($warning, $warning-invert),
+  'danger': ($danger, $danger-invert)
 );
 
 // Links
@@ -77,5 +68,5 @@ $body-overflow-y: auto;
 $body-min-width: 320px;
 
 // Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import '~bulma';
+@import '~buefy/src/scss/buefy';

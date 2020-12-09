@@ -16,12 +16,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #app {
-    height: 100vh;
-    margin-bottom: 0;
-  }
+#app {
+  height: 100vh;
+  margin-bottom: 0;
+}
 
-  .columns {
-    margin: 0;
-  }
+.columns {
+  margin: 0;
+}
 </style>

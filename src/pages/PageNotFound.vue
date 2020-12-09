@@ -4,7 +4,12 @@
       <div class="container">
         <h1>Unkown Page</h1>
         <p class="mb-4">Click the return button to go back to safety</p>
-        <b-button tag="router-link" :to="{ name: 'FileExplorer' }" type="is-accent" class="is-rounded">
+        <b-button
+          tag="router-link"
+          :to="{ name: 'FileExplorer' }"
+          type="is-accent"
+          class="is-rounded"
+        >
           Return
         </b-button>
       </div>
