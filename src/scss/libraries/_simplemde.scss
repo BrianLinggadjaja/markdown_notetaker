@@ -831,6 +831,7 @@ span.CodeMirror-selectedtext {
 }
 
 .editor-toolbar {
+  box-shadow: 0 2px 3px inset $color-shadow-light;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

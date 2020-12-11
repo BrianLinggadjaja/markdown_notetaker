@@ -28,5 +28,6 @@ export default {
 
 .editor-wrapper {
   padding: 0;
+  box-shadow: -1px 0 3px $color-shadow-light;
 }
 </style>

@@ -38,25 +38,28 @@ $color-accent-border: darken($color-accent, 25%);
 $color-background: #ffffff;
 $color-background-invert: findColorInvert($color-background);
 
+$color-shadow-dark: rgba(60, 60, 60, 0.6);
+$color-shadow-light: rgba(215, 215, 215, 0.6);
+
 /*
     * Buefy Customization
     */
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
-  // Base
-  'white': ($white, $black),
-  'black': ($black, $white),
-  'light': ($light, $light-invert),
-  'dark': ($dark, $dark-invert),
-  // Design System 'primary': ($color-primary, $color-primary-invert),
-  'secondary': ($color-secondary, $color-secondary-invert),
-  'accent': ($color-accent, $color-accent-invert),
-  'background': ($color-background, $color-background-invert),
-  // Action Colors 'info': ($info, $info-invert),
-  'success': ($success, $success-invert),
-  'warning': ($warning, $warning-invert),
-  'danger': ($danger, $danger-invert)
+    // Base
+    'white': ($white, $black),
+    'black': ($black, $white),
+    'light': ($light, $light-invert),
+    'dark': ($dark, $dark-invert),
+    // Design System 'primary': ($color-primary, $color-primary-invert),
+    'secondary': ($color-secondary, $color-secondary-invert),
+    'accent': ($color-accent, $color-accent-invert),
+    'background': ($color-background, $color-background-invert),
+    // Action Colors 'info': ($info, $info-invert),
+    'success': ($success, $success-invert),
+    'warning': ($warning, $warning-invert),
+    'danger': ($danger, $danger-invert)
 );
 
 // Links

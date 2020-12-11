@@ -8,5 +8,6 @@
 .note-selector {
   background-color: $color-secondary;
   color: $color-secondary-invert;
+  box-shadow: 2px 0 3px inset $color-shadow-dark;
 }
 </style>

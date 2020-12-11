@@ -37,7 +37,7 @@ export default {
         status: false,
         hideIcons: ['guide'],
         renderingConfig: {
-          codeSyntaxHighlighting: true
+          codeSyntaxHighlighting: false
         }
       })
       console.log(test)
