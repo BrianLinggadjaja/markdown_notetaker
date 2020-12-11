@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, nativeTheme } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -21,6 +21,7 @@ function createWindow () {
     width: 1440,
     minHeight: 650,
     minWidth: 1200,
+    transparent: true,
     titleBarStyle: 'hidden',
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -28,6 +29,9 @@ function createWindow () {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+
+  // Use system theme colors
+  nativeTheme.themeSouce = 'system'
 
   win.removeMenu()
 
