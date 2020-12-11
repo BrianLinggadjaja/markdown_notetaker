@@ -1,11 +1,24 @@
 <template>
   <aside class="note-selector menu column is-primary is-3">
+    <b-field>
+      <b-input placeholder="Search..."
+        type="search"
+        icon-pack="fa"
+        icon="search">
+      </b-input>
+    </b-field>
     <p class="menu-label">Note Selector</p>
     <ul class="menu-list">
       <li>Test</li>
     </ul>
   </aside>
 </template>
+
+<style lang="scss">
+.note-selector .input[type="search"] {
+  border-radius: 2rem;
+}
+</style>
 
 <style lang="scss" scoped>
 .note-selector {

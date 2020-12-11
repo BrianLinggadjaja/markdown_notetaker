@@ -44,6 +44,21 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.menu {
+  & a {
+    font-family: $font-family-normal;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+}
+
+.menu-label {
+  font-family: $font-family-header;
+  font-size: 1rem;
+}
+</style>
+
 <style lang="scss" scoped>
 .note-sorter__header {
   font-family: $font-family-header;
@@ -83,20 +98,5 @@ export default {
   .menu-label {
     color: $color-primary-invert;
   }
-}
-</style>
-
-<style lang="scss">
-.menu {
-  & a {
-    font-family: $font-family-normal;
-    font-weight: normal;
-    font-size: 1rem;
-  }
-}
-
-.menu-label {
-  font-family: $font-family-header;
-  font-size: 1rem;
 }
 </style>

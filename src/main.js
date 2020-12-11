@@ -13,14 +13,14 @@ import SettingsState from './store/settings'
 // Libraries
 import Buefy from 'buefy'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBook, faBookmark, faFileAlt, faTags } from '@fortawesome/free-solid-svg-icons'
+import { faBook, faBookmark, faFileAlt, faTags, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Global CSS
 import '@/scss/_base.scss'
 
 // Vue use Font-Awesome
-library.add(faBook, faBookmark, faFileAlt, faTags)
+library.add(faBook, faBookmark, faFileAlt, faTags, faSearch)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Vue Configuration
