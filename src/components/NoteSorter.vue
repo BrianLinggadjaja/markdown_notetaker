@@ -1,9 +1,12 @@
 <template>
   <aside class="note-sorter menu column is-primary is-2">
+    <div class="note-sorter__header">
+      <span>Simple Markdown Notetaker</span>
+    </div>
     <p class="menu-label">Note Sorter</p>
     <ul class="menu-list">
       <li>
-        <a :class="[{ ['active']: (currentSort === 'notes')  }, 'note-sorter__category']">
+        <a :class="[{ ['active']: (currentSort === 'notes')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="file-alt" />
           <span class="note-sorter__name">All Notes</span>
         </a>
@@ -14,8 +17,9 @@
           <span class="note-sorter__name">Bookmarked</span>
         </a>
       </li>
+      <hr>
       <li>
-        <a :class="[{ ['active']: (currentSort === 'notebooks')  }, 'note-sorter__category']">
+        <a :class="[{ ['active']: (currentSort === 'notebooks')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="book" />
           <span class="note-sorter__name">Notebooks</span>
         </a>
@@ -41,6 +45,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.note-sorter__header {
+  font-family: $font-family-header;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
 .note-sorter {
   background-color: $color-primary;
   color: $color-primary-invert;
@@ -49,6 +61,10 @@ export default {
   @media screen and (min-width: $tablet) {
     max-width: 18rem;
     min-width: 16rem;
+  }
+
+  & hr {
+    background-color: $color-primary-lighter;
   }
 
   & a {
@@ -62,6 +78,10 @@ export default {
 
   &__name {
     margin-left: 0.75rem;
+  }
+
+  .menu-label {
+    color: $color-primary-invert;
   }
 }
 </style>
