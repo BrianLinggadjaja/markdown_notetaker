@@ -12,9 +12,16 @@ import SettingsState from './store/settings'
 
 // Libraries
 import Buefy from 'buefy'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Global CSS
 import '@/scss/_base.scss'
+
+// Vue use Font-Awesome
+library.add(faBook)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Vue Configuration
 Vue.use(Vuex)

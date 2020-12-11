@@ -18,6 +18,9 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
     "buefy": "^0.9.3",
     "core-js": "^3.6.5",
     "eslint-plugin-only-warn": "^1.0.2",

@@ -3,7 +3,10 @@
     <p class="menu-label">Note Sorter</p>
     <ul class="menu-list">
       <li><a>All Notes</a></li>
-      <li><a>Notebooks</a></li>
+      <li>
+        <font-awesome-icon icon="book" />
+        <a>Notebooks</a>
+      </li>
       <li><a>Tags</a></li>
       <li><a>Categories</a></li>
       <li><a>Bookmarked</a></li>
