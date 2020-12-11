@@ -5,12 +5,6 @@ const routes = [
     meta: { title: '404 Unknown Page' }
   },
   {
-    path: '/',
-    component: () => import('./pages/FileExplorer'),
-    name: 'FileExplorer',
-    meta: { title: 'Explorer' }
-  },
-  {
     path: '/editor',
     component: () => import('./pages/Editor'),
     name: 'Editor',

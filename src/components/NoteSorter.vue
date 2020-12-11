@@ -6,26 +6,26 @@
     <p class="menu-label">Note Sorter</p>
     <ul class="menu-list">
       <li>
-        <a :class="[{ ['active']: (currentSort === 'notes')  }, 'note-sorter__category mb-1']">
+        <a :class="[{ ['active']: (currentNoteSort === 'notes')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="file-alt" />
           <span class="note-sorter__name">All Notes</span>
         </a>
       </li>
       <li>
-        <a :class="[{ ['active']: (currentSort === 'bookmarked')  }, 'note-sorter__category']">
+        <a :class="[{ ['active']: (currentNoteSort === 'bookmarked')  }, 'note-sorter__category']">
           <font-awesome-icon icon="bookmark" />
           <span class="note-sorter__name">Bookmarked</span>
         </a>
       </li>
       <hr>
       <li>
-        <a :class="[{ ['active']: (currentSort === 'notebooks')  }, 'note-sorter__category mb-1']">
+        <a :class="[{ ['active']: (currentNoteSort === 'notebooks')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="book" />
           <span class="note-sorter__name">Notebooks</span>
         </a>
       </li>
       <li>
-        <a :class="[{ ['active']: (currentSort === 'tags')  }, 'note-sorter__category']">
+        <a :class="[{ ['active']: (currentNoteSort === 'tags')  }, 'note-sorter__category']">
           <font-awesome-icon icon="tags" />
           <span class="note-sorter__name">Tags</span>
         </a>
@@ -35,11 +35,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data () {
-    return {
-      currentSort: 'notes'
-    }
+  computed: {
+    ...mapGetters({
+      currentNoteSort: 'global/getCurrentNoteSort'
+    })
   }
 }
 </script>

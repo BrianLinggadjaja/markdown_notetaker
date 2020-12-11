@@ -17,27 +17,27 @@
   */
 
 const state = () => ({
-  shoppingCart: []
+  selectedNoteSort: 'notes'
 })
 
 // Actions
 const actions = {
-  addToCart ({ commit }, itemName) {
-    commit('pushItemToCart', itemName)
+  selectNoteSort ({ commit }, selectedSortName) {
+    commit('updateNoteSort', selectedSortName)
   }
 }
 
 // Mutations
 const mutations = {
-  pushItemToCart (state, { itemName }) {
-    state.shoppingCart.push(itemName)
+  pushItemToCart (state, { selectedSortName }) {
+    state.selectedNoteSort = selectedSortName
   }
 }
 
 // Getters
 const getters = {
-  getShoppingCart: state => {
-    return state.shoppingCart
+  getCurrentNoteSort: state => {
+    return state.selectedNoteSort
   }
 }
 

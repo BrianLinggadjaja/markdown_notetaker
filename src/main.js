@@ -6,7 +6,6 @@ import App from './App.vue'
 
 // Import VueX "Page" modules
 import GlobalState from './store/global'
-import FileExplorerState from './store/file-explorer'
 import EditorState from './store/editor'
 import SettingsState from './store/settings'
 
@@ -48,10 +47,9 @@ const debug = process.env.NODE_ENV !== 'production'
 // Vuex Global Store (State Management) Initalization
 const store = new Vuex.Store({
   modules: {
-    GlobalState,
-    FileExplorerState,
-    EditorState,
-    SettingsState
+    global: GlobalState,
+    editor: EditorState,
+    settings: SettingsState
   },
   strict: debug
 })
