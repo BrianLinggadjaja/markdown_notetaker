@@ -1,6 +1,6 @@
 <template>
   <aside class="note-selector column is-primary is-2">
-    <p>Note Sorter</p>
+    <p>Note selector</p>
   </aside>
 </template>
 
