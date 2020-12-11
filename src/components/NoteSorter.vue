@@ -51,16 +51,8 @@ export default {
     min-width: 16rem;
   }
 
-  & .menu-label {
-    font-family: $font-family-header;
-    font-size: 1rem;
-  }
-
   & a {
     color: $color-primary-invert;
-    font-family: $font-family-normal;
-    font-weight: normal;
-    font-size: 1.15rem;
   }
 
   &__category.active {
@@ -71,5 +63,20 @@ export default {
   &__name {
     margin-left: 0.75rem;
   }
+}
+</style>
+
+<style lang="scss">
+.menu {
+  & a {
+    font-family: $font-family-normal;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+}
+
+.menu-label {
+  font-family: $font-family-header;
+  font-size: 1rem;
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
-  <aside class="note-selector column is-primary is-3">
-    <p>Note selector</p>
+  <aside class="note-selector menu column is-primary is-3">
+    <p class="menu-label">Note Selector</p>
+    <ul class="menu-list">
+      <li>Test</li>
+    </ul>
   </aside>
 </template>
 
