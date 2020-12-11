@@ -1,12 +1,14 @@
 <template>
   <aside class="note-selector menu column is-primary is-3">
-    <b-field>
-      <b-input placeholder="Search..."
-        type="search"
-        icon-pack="fa"
-        icon="search">
-      </b-input>
-    </b-field>
+    <div class="note-selector__search">
+      <b-field>
+        <b-input placeholder="Search..."
+          type="search"
+          icon-pack="fa"
+          icon="search">
+        </b-input>
+      </b-field>
+    </div>
     <p class="menu-label">Note Selector</p>
     <ul class="menu-list">
       <li>Test</li>
@@ -29,6 +31,10 @@
   @media screen and (min-width: $tablet) {
     max-width: 20rem;
     min-width: 16rem;
+  }
+
+  &__search {
+    padding: 0.6rem 0;
   }
 }
 </style>
