@@ -27,9 +27,11 @@ $color-primary: #20272c;
 $color-primary-invert: findColorInvert($color-primary);
 
 $color-secondary: #f7f7f7;
+$color-secondary-darker: darken($color-secondary, 5%);
 $color-secondary-invert: findColorInvert($color-secondary);
 
 $color-accent: #ffc61b;
+$color-accent-darker: darken($color-accent, 5%);
 $color-accent-invert: findColorInvert($color-accent);
 $color-accent-border: darken($color-accent, 25%);
 
@@ -43,7 +45,7 @@ $color-background-invert: findColorInvert($color-background);
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
   // Base
-    'white': ($white, $black),
+  'white': ($white, $black),
   'black': ($black, $white),
   'light': ($light, $light-invert),
   'dark': ($dark, $dark-invert),

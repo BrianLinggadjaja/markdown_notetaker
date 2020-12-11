@@ -16,7 +16,7 @@
         </b-navbar-item>
       </template>
     </b-navbar>
-    <textarea id="testEditor"></textarea>
+    <textarea id="editorPreview"></textarea>
   </div>
 </template>
 
@@ -32,7 +32,8 @@ export default {
   methods: {
     initEditor: function () {
       const test = new SimpleMDE({
-        element: document.getElementById('testEditor'),
+        element: document.getElementById('editorPreview'),
+        autosave: true,
         status: false,
         hideIcons: ['guide'],
         renderingConfig: {
