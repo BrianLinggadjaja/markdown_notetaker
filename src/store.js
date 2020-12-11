@@ -17,7 +17,10 @@
   */
 
 const state = () => ({
-  selectedNoteSort: 'notes'
+  selectedNoteSort: 'notes',
+  savedNotesObj: {},
+  bookmarkedNotesRefsArray: [],
+
 })
 
 // Actions
@@ -29,7 +32,7 @@ const actions = {
 
 // Mutations
 const mutations = {
-  updateNoteSort (state, { selectedSortName }) {
+  updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
   }
 }

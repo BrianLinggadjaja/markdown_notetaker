@@ -6,26 +6,26 @@
     <p class="menu-label">Note Sorter</p>
     <ul class="menu-list">
       <li>
-        <a :class="[{ ['active']: (currentNoteSort === 'notes')  }, 'note-sorter__category mb-1']">
+        <a @click="setNoteSort('notes')" :class="[{ ['active']: (currentNoteSort === 'notes')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="file-alt" />
           <span class="note-sorter__name">All Notes</span>
         </a>
       </li>
       <li>
-        <a :class="[{ ['active']: (currentNoteSort === 'bookmarked')  }, 'note-sorter__category']">
+        <a @click="setNoteSort('bookmarked')" :class="[{ ['active']: (currentNoteSort === 'bookmarked')  }, 'note-sorter__category']">
           <font-awesome-icon icon="bookmark" />
           <span class="note-sorter__name">Bookmarked</span>
         </a>
       </li>
       <hr>
       <li>
-        <a :class="[{ ['active']: (currentNoteSort === 'notebooks')  }, 'note-sorter__category mb-1']">
+        <a @click="setNoteSort('notebooks')" :class="[{ ['active']: (currentNoteSort === 'notebooks')  }, 'note-sorter__category mb-1']">
           <font-awesome-icon icon="book" />
           <span class="note-sorter__name">Notebooks</span>
         </a>
       </li>
       <li>
-        <a :class="[{ ['active']: (currentNoteSort === 'tags')  }, 'note-sorter__category']">
+        <a @click="setNoteSort('tags')" :class="[{ ['active']: (currentNoteSort === 'tags')  }, 'note-sorter__category']">
           <font-awesome-icon icon="tags" />
           <span class="note-sorter__name">Tags</span>
         </a>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   computed: {
@@ -44,8 +44,14 @@ export default {
     })
   },
 
-  mounted () {
-    console.log(this.currentNoteSort)
+  methods: {
+    ...mapActions([
+      'selectNoteSort'
+    ]),
+
+    setNoteSort (selectedSortName) {
+      this.$store.dispatch('selectNoteSort', selectedSortName)
+    }
   }
 }
 </script>
@@ -67,11 +73,16 @@ export default {
 
 <style lang="scss" scoped>
 .note-sorter__header {
+  text-align: center;
   font-family: $font-family-header;
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem 0;
   margin-bottom: 1rem;
+
+  @media screen and (min-width: $tablet) {
+    text-align: left;
+  }
 }
 
 .note-sorter {
