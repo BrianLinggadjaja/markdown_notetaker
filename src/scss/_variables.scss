@@ -71,6 +71,7 @@ $link-focus-border: lighten($color-accent, 25%);
 $navbar-height: 2rem;
 $body-overflow-y: auto;
 $body-min-width: 320px;
+$tablet: 1024px;
 
 // Import Bulma and Buefy styles
 @import '~bulma';

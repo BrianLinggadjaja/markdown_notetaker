@@ -23,11 +23,14 @@ export default {
 
 <style lang="scss" scoped>
 .editor-page {
-  height: 100vh;
+  @media screen and (min-width: $tablet) {
+    height: 100vh;
+  }
 }
 
 .editor-wrapper {
-  padding: 0;
   box-shadow: -1px 0 3px $color-shadow-light;
+  flex: 100;
+  padding: 0;
 }
 </style>

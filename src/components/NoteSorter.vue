@@ -2,23 +2,74 @@
   <aside class="note-sorter menu column is-primary is-2">
     <p class="menu-label">Note Sorter</p>
     <ul class="menu-list">
-      <li><a>All Notes</a></li>
       <li>
-        <font-awesome-icon icon="book" />
-        <a>Notebooks</a>
+        <a :class="[{ ['active']: (currentSort === 'notes')  }, 'note-sorter__category']">
+          <font-awesome-icon icon="file-alt" />
+          <span class="note-sorter__name">All Notes</span>
+        </a>
       </li>
-      <li><a>Tags</a></li>
-      <li><a>Categories</a></li>
-      <li><a>Bookmarked</a></li>
-      <li><a>Settings</a></li>
+      <li>
+        <a :class="[{ ['active']: (currentSort === 'bookmarked')  }, 'note-sorter__category']">
+          <font-awesome-icon icon="bookmark" />
+          <span class="note-sorter__name">Bookmarked</span>
+        </a>
+      </li>
+      <li>
+        <a :class="[{ ['active']: (currentSort === 'notebooks')  }, 'note-sorter__category']">
+          <font-awesome-icon icon="book" />
+          <span class="note-sorter__name">Notebooks</span>
+        </a>
+      </li>
+      <li>
+        <a :class="[{ ['active']: (currentSort === 'tags')  }, 'note-sorter__category']">
+          <font-awesome-icon icon="tags" />
+          <span class="note-sorter__name">Tags</span>
+        </a>
+      </li>
     </ul>
   </aside>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      currentSort: 'notes'
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .note-sorter {
   background-color: $color-primary;
   color: $color-primary-invert;
   font-size: medium;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 18rem;
+    min-width: 16rem;
+  }
+
+  & .menu-label {
+    font-family: $font-family-header;
+    font-size: 1rem;
+  }
+
+  & a {
+    color: $color-primary-invert;
+    font-family: $font-family-normal;
+    font-weight: normal;
+    font-size: 1.15rem;
+  }
+
+  &__category.active {
+    background-color: $color-accent;
+    color: $color-accent-invert;
+  }
+
+  &__name {
+    margin-left: 0.75rem;
+  }
 }
 </style>

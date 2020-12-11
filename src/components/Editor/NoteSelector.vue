@@ -9,5 +9,10 @@
   background-color: $color-secondary;
   color: $color-secondary-invert;
   box-shadow: 2px 0 3px inset $color-shadow-dark;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 20rem;
+    min-width: 16rem;
+  }
 }
 </style>
