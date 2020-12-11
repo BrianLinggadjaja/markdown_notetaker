@@ -18,9 +18,30 @@
 
 const state = () => ({
   selectedNoteSort: 'notes',
-  savedNotesObj: {},
-  bookmarkedNotesRefsArray: [],
+  savedNotesObj: {
+    'Hello Word': {
+      title: 'Hello World',
+      markdown: `# Header 1
+        ## Header 2
+        ### Header 3
+        #### Header 4
+        ##### Header 5
+        Test
 
+        > Quote
+
+        * UO
+        * One
+        * Two
+        * Three
+
+        1. OL
+        2. One
+        3. Two
+        4. Three`
+    }
+  },
+  bookmarkedNotesRefsArray: []
 })
 
 // Actions

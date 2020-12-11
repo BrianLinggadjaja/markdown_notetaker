@@ -31,7 +31,7 @@ export default {
 
   methods: {
     initEditor: function () {
-      const test = new SimpleMDE({
+      const markdownEditor = new SimpleMDE({
         element: document.getElementById('editorPreview'),
         autosave: true,
         status: false,
@@ -40,7 +40,10 @@ export default {
           codeSyntaxHighlighting: false
         }
       })
-      console.log(test)
+
+      markdownEditor.codemirror.on('change', function () {
+        console.log(markdownEditor.value())
+      })
     }
   }
 }
