@@ -40,8 +40,12 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      currentNoteSort: 'global/getCurrentNoteSort'
+      currentNoteSort: 'getCurrentNoteSort'
     })
+  },
+
+  mounted () {
+    console.log(this.currentNoteSort)
   }
 }
 </script>

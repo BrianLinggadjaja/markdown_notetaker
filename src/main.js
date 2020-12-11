@@ -5,9 +5,7 @@ import routes from './routes'
 import App from './App.vue'
 
 // Import VueX "Page" modules
-import GlobalState from './store/global'
-import EditorState from './store/editor'
-import SettingsState from './store/settings'
+import GlobalStore from './store'
 
 // Libraries
 import Buefy from 'buefy'
@@ -43,16 +41,10 @@ router.afterEach(to => {
 
 // Check if development mode and provide debug boolean
 const debug = process.env.NODE_ENV !== 'production'
+GlobalStore.strict = debug
 
 // Vuex Global Store (State Management) Initalization
-const store = new Vuex.Store({
-  modules: {
-    global: GlobalState,
-    editor: EditorState,
-    settings: SettingsState
-  },
-  strict: debug
-})
+const store = new Vuex.Store(GlobalStore)
 
 // Vue Instance
 new Vue({

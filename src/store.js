@@ -29,7 +29,7 @@ const actions = {
 
 // Mutations
 const mutations = {
-  pushItemToCart (state, { selectedSortName }) {
+  updateNoteSort (state, { selectedSortName }) {
     state.selectedNoteSort = selectedSortName
   }
 }
