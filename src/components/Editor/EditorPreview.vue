@@ -33,6 +33,8 @@ export default {
     initEditor: function () {
       const test = new SimpleMDE({
         element: document.getElementById('testEditor'),
+        status: false,
+        hideIcons: ['guide'],
         renderingConfig: {
           codeSyntaxHighlighting: true
         }
@@ -42,3 +44,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

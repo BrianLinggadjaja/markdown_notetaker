@@ -1,5 +1,5 @@
 <template>
-  <aside class="note-selector column is-primary is-2">
+  <aside class="note-selector column is-primary is-3">
     <p>Note selector</p>
   </aside>
 </template>
