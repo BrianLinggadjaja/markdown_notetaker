@@ -21,6 +21,7 @@ function createWindow () {
     width: 1440,
     minHeight: 650,
     minWidth: 1200,
+    titleBarStyle: 'hidden',
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
