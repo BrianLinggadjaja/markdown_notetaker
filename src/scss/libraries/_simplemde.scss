@@ -1,4 +1,5 @@
 .CodeMirror {
+  flex: 100;
   color: #000;
 }
 
@@ -821,4 +822,69 @@ span.CodeMirror-selectedtext {
 .CodeMirror
   .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
   background: rgba(255, 0, 0, 0.15);
+}
+
+// Modifications
+.CodeMirror {
+  cursor: text;
+  line-height: 1.5;
+}
+
+.editor-toolbar {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.editor-preview {
+  cursor: default;
+}
+
+.cm-s-paper,
+.editor-preview,
+.editor-preview-side {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 0.75rem 1.5rem;
+
+  & * {
+    font-family: $font-family-normal !important;
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+  }
+
+  & .cm-header,
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5 {
+    font-family: $font-family-header !important;
+    font-weight: bold !important;
+    padding: 1rem 0 0.5rem 0;
+  }
+  
+  & .cm-header-1,
+  & h1 {
+    font-size: 3.5rem !important;
+  }
+  
+  & .cm-header-2,
+  & h2 {
+    font-size: 2.75rem !important;
+  }
+  
+  & .cm-header-3,
+  & h3 {
+    font-size: 2.25rem !important;
+  }
+  
+  & .cm-header-4,
+  & h4 {
+    font-size: 2rem !important;
+  }
+  
+  & .cm-header-5,
+  & h5 {
+    font-size: 1.75rem !important;
+  } 
 }

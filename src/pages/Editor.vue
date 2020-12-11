@@ -1,10 +1,8 @@
 <template>
   <main class="column is-10">
-    <div class="editor columns">
+    <div class="editor-page columns">
       <note-selector />
-
-      <div id="test"></div>
-      <section class="column is-9">
+      <section class="editor-wrapper column is-9">
         <editor-preview />
       </section>
     </div>
@@ -24,7 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.editor {
+.editor-page {
   height: 100vh;
+}
+
+.editor-wrapper {
+  padding: 0;
 }
 </style>

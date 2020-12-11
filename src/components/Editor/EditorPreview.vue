@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="editor">
     <b-navbar>
       <template slot="start">
         <b-navbar-item>
@@ -46,5 +46,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.editor {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
 </style>
