@@ -35,13 +35,12 @@
       <div class="buttons mb-4">
         <p>
           <b-switch
-            class="ml-3"
+            class="ml-3 mt-5"
             v-model="lightMode"
             passive-type="is-dark"
-            type="is-warning"
-          >
-            {{ lightMode ? 'Light Mode' : 'Dark Mode' }}</b-switch
-          >
+            type="is-warning">
+            {{ lightMode ? 'Light Mode' : 'Dark Mode' }}
+          </b-switch>
         </p>
       </div>
     </div>
@@ -65,7 +64,7 @@ export default {
 
     setNoteSort (selectedSortName) {
       this.$store.dispatch('selectNoteSort', selectedSortName)
-    },
+    }
   },
 
   data () {
@@ -92,7 +91,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.menu-list{
+.menu-list {
   flex: 100;
 }
 
@@ -102,7 +101,7 @@ export default {
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 
   @media screen and (min-width: $tablet) {
     text-align: left;
