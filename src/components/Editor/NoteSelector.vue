@@ -2,6 +2,7 @@
   <aside class="note-selector menu column is-primary is-3">
     <div class="note-selector__search">
       <b-field>
+        <!-- https://buefy.org/documentation/autocomplete -->
         <b-input placeholder="Search..."
           type="search"
           icon-pack="fa"
@@ -10,11 +11,27 @@
       </b-field>
     </div>
     <p class="menu-label">Note Selector</p>
-    <ul class="menu-list">
-      <li>Test</li>
-    </ul>
+    <div class="note-selector__create-note">
+      <button @click="createNewNote" class="button is-primary">Create Note</button>
+    </div>
+
+    <!-- Refactor into new component -->
+    <div>
+      <span>Test</span>
+    </div>
   </aside>
 </template>
+
+<script>
+export default {
+  methods: {
+    // https://buefy.org/documentation/taginput
+    createNewNote: function () {
+      console.log('create a new note!')
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 .note-selector .input[type="search"] {
@@ -35,6 +52,17 @@
 
   &__search {
     padding: 0.6rem 0;
+  }
+
+  &__create-note {
+    text-align: center;
+    font-size: 0.6rem;
+    padding: 0 0 0.8rem 0;
+
+    & button {
+      font-size: 0.9rem;
+      width: 100%;
+    }
   }
 }
 </style>
