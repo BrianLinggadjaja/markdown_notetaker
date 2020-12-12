@@ -60,9 +60,7 @@ export default {
       })
 
       // Load selected note into editor when initalized
-      // const storedNote = JSON.parse(this.selectedNote.markdown)
-      // // this.markdownEditor.value(storedNote)
-      console.log(JSON.parse(this.selectedNote.markdown))
+      this.markdownEditor.value(JSON.parse(this.selectedNote.markdown))
 
       // Attach instance to "this"
       const instance = this

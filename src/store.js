@@ -22,7 +22,7 @@ const state = () => ({
   savedNotesObj: {
     'Hello World': {
       title: 'Hello World',
-      markdown: null
+      markdown: JSON.stringify('# New Note\nStart creating your note...')
     }
   },
   bookmarkedNotesRefsArray: []
