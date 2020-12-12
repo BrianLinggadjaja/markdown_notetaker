@@ -15,18 +15,26 @@
   * Default State
   * Set default values for each value stored
   */
-
 const state = () => ({
   selectedNoteSort: 'notes',
-  savedNotesObj: {},
-  bookmarkedNotesRefsArray: [],
-
+  selectedNoteRef: 'Hello World',
+  savedNotesObj: {
+    'Hello World': {
+      title: 'Hello World',
+      markdown: '# New Note\nStart creating your note...'
+    }
+  },
+  bookmarkedNotesRefsArray: []
 })
 
 // Actions
 const actions = {
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
+  },
+
+  saveSelectedNote ({ commit }, updatedNote) {
+    commit('updateCurrentSelectedNote', updatedNote)
   }
 }
 
@@ -34,6 +42,10 @@ const actions = {
 const mutations = {
   updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
+  },
+
+  updateCurrentSelectedNote (state, updatedNote) {
+    state.savedNotesObj[state.selectedNoteRef] = updatedNote
   }
 }
 
@@ -41,6 +53,13 @@ const mutations = {
 const getters = {
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
+  },
+  getAllNoteRefs: state => {
+    return Object.keys(state.savedNotesObj)
+  },
+  getSelectedNote: state => {
+    const parsedNote = JSON.parse(state.savedNotesObj[state.selectedNoteRef])
+    return parsedNote
   }
 }
 

@@ -1,22 +1,24 @@
+// Javascript Libraries
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import App from './App.vue'
 
-// Import VueX "Page" modules
+// Import VueX Store
 import GlobalStore from './store'
 
-// Libraries
+// Style Libraries
 import Buefy from 'buefy'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBook, faBookmark, faFileAlt, faTags, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-// Global CSS
+// Global Style
 import '@/scss/_base.scss'
 
-// Vue use Font-Awesome
+// Font Awesome
 library.add(faBook, faBookmark, faFileAlt, faTags, faSearch)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -42,6 +44,13 @@ router.afterEach(to => {
 // Check if development mode and provide debug boolean
 const debug = process.env.NODE_ENV !== 'production'
 GlobalStore.strict = debug
+
+const persistedStore = new VuexPersistence({
+  storage: window.localStorage
+})
+
+// Attach Plugins to Vuex store
+GlobalStore.plugins = [persistedStore.plugin]
 
 // Vuex Global Store (State Management) Initalization
 const store = new Vuex.Store(GlobalStore)
