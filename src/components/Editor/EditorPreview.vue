@@ -60,7 +60,7 @@ export default {
       })
 
       // Load selected note into editor when initalized
-      this.markdownEditor.value(JSON.parse(this.selectedNote.markdown))
+      this.markdownEditor.value(this.selectedNote)
 
       // Attach instance to "this"
       const instance = this
@@ -77,7 +77,6 @@ export default {
     },
 
     saveNoteInState: function (editorText) {
-      console.log(editorText)
       this.$store.dispatch('saveSelectedNote', editorText)
     }
   }

@@ -15,14 +15,13 @@
   * Default State
   * Set default values for each value stored
   */
-
 const state = () => ({
   selectedNoteSort: 'notes',
   selectedNoteRef: 'Hello World',
   savedNotesObj: {
     'Hello World': {
       title: 'Hello World',
-      markdown: JSON.stringify('# New Note\nStart creating your note...')
+      markdown: '# New Note\nStart creating your note...'
     }
   },
   bookmarkedNotesRefsArray: []
@@ -59,7 +58,8 @@ const getters = {
     return Object.keys(state.savedNotesObj)
   },
   getSelectedNote: state => {
-    return state.savedNotesObj[state.selectedNoteRef]
+    const parsedNote = JSON.parse(state.savedNotesObj[state.selectedNoteRef])
+    return parsedNote
   }
 }
 
