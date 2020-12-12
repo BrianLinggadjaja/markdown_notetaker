@@ -1,36 +1,50 @@
 <template>
   <aside class="note-sorter menu column is-primary is-2">
-    <div class="note-sorter__header">
-      <span>Simple Markdown Notetaker</span>
+    <div class="note-sorter-wrapper">
+      <div class="note-sorter__header">
+        <span>Simple Markdown Notetaker</span>
+      </div>
+      <p class="menu-label">Note Sorter</p>
+      <ul class="menu-list">
+        <li>
+          <a @click="setNoteSort('notes')" :class="[{ ['active']: (currentNoteSort === 'notes')  }, 'note-sorter__category mb-1']">
+            <font-awesome-icon icon="file-alt" />
+            <span class="note-sorter__name">All Notes</span>
+          </a>
+        </li>
+        <li>
+          <a @click="setNoteSort('bookmarked')" :class="[{ ['active']: (currentNoteSort === 'bookmarked')  }, 'note-sorter__category']">
+            <font-awesome-icon icon="bookmark" />
+            <span class="note-sorter__name">Bookmarked</span>
+          </a>
+        </li>
+        <hr>
+        <li>
+          <a @click="setNoteSort('notebooks')" :class="[{ ['active']: (currentNoteSort === 'notebooks')  }, 'note-sorter__category mb-1']">
+            <font-awesome-icon icon="book" />
+            <span class="note-sorter__name">Notebooks</span>
+          </a>
+        </li>
+        <li>
+          <a @click="setNoteSort('tags')" :class="[{ ['active']: (currentNoteSort === 'tags')  }, 'note-sorter__category']">
+            <font-awesome-icon icon="tags" />
+            <span class="note-sorter__name">Tags</span>
+          </a>
+        </li>
+      </ul>
+      <div class="buttons mb-4">
+        <p>
+          <b-switch
+            class="ml-3"
+            v-model="lightMode"
+            passive-type="is-dark"
+            type="is-warning"
+          >
+            {{ lightMode ? 'Light Mode' : 'Dark Mode' }}</b-switch
+          >
+        </p>
+      </div>
     </div>
-    <p class="menu-label">Note Sorter</p>
-    <ul class="menu-list">
-      <li>
-        <a @click="setNoteSort('notes')" :class="[{ ['active']: (currentNoteSort === 'notes')  }, 'note-sorter__category mb-1']">
-          <font-awesome-icon icon="file-alt" />
-          <span class="note-sorter__name">All Notes</span>
-        </a>
-      </li>
-      <li>
-        <a @click="setNoteSort('bookmarked')" :class="[{ ['active']: (currentNoteSort === 'bookmarked')  }, 'note-sorter__category']">
-          <font-awesome-icon icon="bookmark" />
-          <span class="note-sorter__name">Bookmarked</span>
-        </a>
-      </li>
-      <hr>
-      <li>
-        <a @click="setNoteSort('notebooks')" :class="[{ ['active']: (currentNoteSort === 'notebooks')  }, 'note-sorter__category mb-1']">
-          <font-awesome-icon icon="book" />
-          <span class="note-sorter__name">Notebooks</span>
-        </a>
-      </li>
-      <li>
-        <a @click="setNoteSort('tags')" :class="[{ ['active']: (currentNoteSort === 'tags')  }, 'note-sorter__category']">
-          <font-awesome-icon icon="tags" />
-          <span class="note-sorter__name">Tags</span>
-        </a>
-      </li>
-    </ul>
   </aside>
 </template>
 
@@ -51,6 +65,12 @@ export default {
 
     setNoteSort (selectedSortName) {
       this.$store.dispatch('selectNoteSort', selectedSortName)
+    },
+  },
+
+  data () {
+    return {
+      lightMode: true
     }
   }
 }
@@ -72,6 +92,10 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.menu-list{
+  flex: 100;
+}
+
 .note-sorter__header {
   text-align: center;
   font-family: $font-family-header;
@@ -94,6 +118,12 @@ export default {
     max-width: 18rem;
     min-width: 16rem;
   }
+
+.note-sorter-wrapper{
+  display: flex !important;
+  flex-flow: column;
+  height: 100%;
+}
 
   & hr {
     background-color: $color-primary-lighter;
