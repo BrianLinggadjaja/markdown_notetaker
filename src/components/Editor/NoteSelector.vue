@@ -18,7 +18,7 @@
     <!-- Refactor into new component -->
     <div class="note box">
       <h1 class="note-title">Comp 484 - Lecture 1 (12/11/2020)</h1>
-      <h2 class="note-book">School</h2>
+      <h2 class="note-book">School Lectures</h2>
       <b-taglist class="note__tag-list">
         <b-tag type="is-red">First</b-tag>
         <b-tag type="is-maroon">Second</b-tag>
