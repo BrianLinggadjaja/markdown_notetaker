@@ -23,15 +23,33 @@
 <script>
 import SimpleMDE from 'simplemde'
 import '@/scss/libraries/_simplemde.scss'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters({
+      allNotesRefsArray: 'getAllNoteRefs',
+      selectedNote: 'getSelectedNote'
+    })
+  },
+
+  data () {
+    return {
+      markdownEditor: null
+    }
+  },
+
   mounted () {
     this.initEditor()
   },
 
   methods: {
+    ...mapActions([
+      'saveSelectedNote'
+    ]),
+
     initEditor: function () {
-      const markdownEditor = new SimpleMDE({
+      this.markdownEditor = new SimpleMDE({
         element: document.getElementById('editorPreview'),
         autosave: true,
         status: false,
@@ -41,9 +59,28 @@ export default {
         }
       })
 
-      markdownEditor.codemirror.on('change', function () {
-        console.log(markdownEditor.value())
+      // Load selected note into editor when initalized
+      // const storedNote = JSON.parse(this.selectedNote.markdown)
+      // // this.markdownEditor.value(storedNote)
+      console.log(JSON.parse(this.selectedNote.markdown))
+
+      // Attach instance to "this"
+      const instance = this
+      this.markdownEditor.codemirror.on('change', function () {
+        const editorText = instance.markdownEditor.value()
+        instance.saveNoteInState(JSON.stringify(editorText))
+        instance.copyEditorMarkdown(editorText)
       })
+    },
+
+    // Save text to clipboard
+    copyEditorMarkdown: function (editorText) {
+      navigator.clipboard.writeText(editorText)
+    },
+
+    saveNoteInState: function (editorText) {
+      console.log(editorText)
+      this.$store.dispatch('saveSelectedNote', editorText)
     }
   }
 }

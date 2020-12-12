@@ -18,27 +18,11 @@
 
 const state = () => ({
   selectedNoteSort: 'notes',
+  selectedNoteRef: 'Hello World',
   savedNotesObj: {
-    'Hello Word': {
+    'Hello World': {
       title: 'Hello World',
-      markdown: `# Header 1
-        ## Header 2
-        ### Header 3
-        #### Header 4
-        ##### Header 5
-        Test
-
-        > Quote
-
-        * UO
-        * One
-        * Two
-        * Three
-
-        1. OL
-        2. One
-        3. Two
-        4. Three`
+      markdown: null
     }
   },
   bookmarkedNotesRefsArray: []
@@ -48,6 +32,10 @@ const state = () => ({
 const actions = {
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
+  },
+
+  saveSelectedNote ({ commit }, updatedNote) {
+    commit('updateCurrentSelectedNote', updatedNote)
   }
 }
 
@@ -55,6 +43,10 @@ const actions = {
 const mutations = {
   updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
+  },
+
+  updateCurrentSelectedNote (state, updatedNote) {
+    state.savedNotesObj[state.selectedNoteRef] = updatedNote
   }
 }
 
@@ -62,6 +54,12 @@ const mutations = {
 const getters = {
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
+  },
+  getAllNoteRefs: state => {
+    return Object.keys(state.savedNotesObj)
+  },
+  getSelectedNote: state => {
+    return state.savedNotesObj[state.selectedNoteRef]
   }
 }
 
