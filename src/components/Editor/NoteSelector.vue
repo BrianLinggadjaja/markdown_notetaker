@@ -12,10 +12,10 @@
     </div>
     <p class="menu-label">Note Selector</p>
     <div class="note-selector__create-note">
-      <button @click="createNewNote" class="button is-primary">Create Note</button>
+      <button @click="isModalActive = true" class="button is-primary">Create Note</button>
     </div>
 
-    <note-creator />
+    <note-creator :isNoteCreatorOpen="isModalActive" />
     <note-card />
   </aside>
 </template>
@@ -30,11 +30,14 @@ export default {
     NoteCreator
   },
 
-  methods: {
-    // https://buefy.org/documentation/taginput
-    createNewNote: function () {
-      console.log('create a new note!')
+  data () {
+    return {
+      isModalActive: false
     }
+  },
+
+  updated () {
+    console.log(this.isModalActive)
   }
 }
 </script>
