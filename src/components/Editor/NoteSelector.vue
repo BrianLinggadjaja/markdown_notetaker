@@ -3,11 +3,16 @@
     <div class="note-selector__search">
       <b-field>
         <!-- https://buefy.org/documentation/autocomplete -->
-        <b-input placeholder="Search..."
-          type="search"
+        <b-autocomplete
+          v-model="name"
+          placeholder="Search..."
+          @select="option => selectedSearch = option"
+          :data="findMatchingNote"
           icon-pack="fa"
-          icon="search">
-        </b-input>
+          icon="search"
+          clearable
+          rounded>
+        </b-autocomplete>
       </b-field>
     </div>
     <p class="menu-label">Note Selector</p>
@@ -35,7 +40,23 @@ export default {
     ...mapGetters({
       currentNoteSort: 'getCurrentNoteSort',
       allNoteRefs: 'getAllNoteRefs'
-    })
+    }),
+
+    findMatchingNote () {
+      return this.allNoteRefs.filter((option) => {
+        return option
+          .toString()
+          .toLowerCase()
+          .indexOf(this.name.toLowerCase()) >= 0
+      })
+    }
+  },
+
+  data () {
+    return {
+      selectedSearch: null,
+      name: ''
+    }
   },
 
   methods: {
@@ -47,6 +68,13 @@ export default {
         trapFocus: true,
         ariaModal: true
       })
+    }
+  },
+
+  updated () {
+    // Check if selected search note exists before updating
+    if (this.selectedSearch) {
+      this.$store.dispatch('changeSelectedNote', this.selectedSearch)
     }
   }
 }
