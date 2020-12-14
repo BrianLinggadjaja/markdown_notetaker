@@ -12,20 +12,8 @@
     </div>
     <p class="menu-label">Note Selector</p>
     <div class="note-selector__create-note">
-      <button @click="isModalOpen = true" class="button is-primary">Create Note</button>
+      <button @click="openNoteCreationModal()" class="button is-primary">Create Note</button>
     </div>
-
-    <b-modal
-      v-model="isModalOpen"
-      has-modal-card
-      trap-focus
-      :destroy-on-hide="true"
-      aria-role="dialog"
-      aria-modal>
-      <div>
-        <note-creator />
-      </div>
-    </b-modal>
 
     <note-card />
   </aside>
@@ -37,13 +25,18 @@ import NoteCreator from './NoteCreator'
 
 export default {
   components: {
-    NoteCard,
-    NoteCreator
+    NoteCard
   },
 
-  data () {
-    return {
-      isModalOpen: false
+  methods: {
+    openNoteCreationModal: function () {
+      this.$buefy.modal.open({
+        parent: this,
+        component: NoteCreator,
+        hasModalCard: true,
+        trapFocus: true,
+        ariaModal: true
+      })
     }
   }
 }

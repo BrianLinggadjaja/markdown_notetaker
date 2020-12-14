@@ -1,6 +1,6 @@
 <template>
   <div class="editor">
-    <b-navbar>
+    <!-- <b-navbar>
       <template slot="start">
         <b-navbar-item>
           <b-button size="is-small">New</b-button>
@@ -15,7 +15,10 @@
           <div class="buttons"></div>
         </b-navbar-item>
       </template>
-    </b-navbar>
+    </b-navbar> -->
+
+    <h1>{{ selectedNote.title }}</h1>
+
     <textarea id="editorPreview"></textarea>
   </div>
 </template>
@@ -60,7 +63,7 @@ export default {
       })
 
       // Load selected note into editor when initalized
-      this.markdownEditor.value(this.selectedNote)
+      this.markdownEditor.value(JSON.parse(this.selectedNote.markdown))
 
       // Attach instance to "this"
       const instance = this
