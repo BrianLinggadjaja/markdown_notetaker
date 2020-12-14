@@ -15,10 +15,36 @@
   * Default State
   * Set default values for each value stored
   */
+const exampleNote = `# Example Note
+This is an example note...
+
+## Text Modification
+I am **Bold**
+I am *Italic*
+
+### Block Level
+> I am a Block
+
+I am an Un-ordered List
+* Test 1
+* Test 2
+* Test 3
+
+I am an Ordered List
+1. Test 1
+2. Test 2
+3. Test 3`
+
 const state = () => ({
   selectedNoteSort: 'notes',
-  selectedNoteRef: 'Test',
-  savedNotesObj: {},
+  selectedNoteRef: 'Example Note',
+  savedNotesObj: {
+    'Example Note': {
+      title: 'Example Note',
+      markdown: JSON.stringify(exampleNote),
+      tags: []
+    }
+  },
   bookmarkedNotesRefsArray: []
 })
 
@@ -60,11 +86,12 @@ const getters = {
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
   },
+
   getAllNoteRefs: state => {
     return Object.keys(state.savedNotesObj)
   },
+
   getSelectedNote: state => {
-    console.log('getter', state, state.savedNotesObj[state.selectedNoteRef])
     const parsedNote = state.savedNotesObj[state.selectedNoteRef]
     return parsedNote
   }
