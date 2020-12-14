@@ -61,7 +61,8 @@ export default {
 
   methods: {
     ...mapActions([
-      'createNote'
+      'createNote',
+      'changeSelectedNote'
     ]),
 
     createNewNote: function () {
@@ -77,6 +78,7 @@ export default {
       }
 
       this.$store.dispatch('createNote', cleanNoteObj)
+      this.$store.dispatch('changeSelectedNote', this.title)
     },
 
     cleanValue: function (value) {

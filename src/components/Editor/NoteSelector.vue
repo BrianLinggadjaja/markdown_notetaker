@@ -38,10 +38,6 @@ export default {
     })
   },
 
-  updated () {
-    console.log(true)
-  },
-
   methods: {
     openNoteCreationModal: function () {
       this.$buefy.modal.open({

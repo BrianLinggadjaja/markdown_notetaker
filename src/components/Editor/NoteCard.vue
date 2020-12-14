@@ -51,13 +51,8 @@ export default {
     this.tags = currentNoteObj.tags
 
     if (currentNoteObj.title === this.currentNoteRef) {
-      console.log('yes')
       this.isCurrentSelectedNote = true
     }
-  },
-
-  updated () {
-    console.log(true)
   },
 
   methods: {
