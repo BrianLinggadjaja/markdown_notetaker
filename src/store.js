@@ -65,6 +65,10 @@ const actions = {
     commit('updateCurrentSelectedNote', updatedNote)
   },
 
+  deleteSelectedNote ({ commit }) {
+    commit('removeCurrentNoteRefFromObj')
+  },
+
   createNote ({ commit }, noteObject) {
     commit('addNoteObject', noteObject)
   },
@@ -86,6 +90,11 @@ const mutations = {
 
   updateCurrentSelectedNote (state, updatedNote) {
     state.savedNotesObj[state.selectedNoteRef].markdown = updatedNote
+  },
+
+  removeCurrentNoteRefFromObj (state) {
+    delete state.savedNotesObj[state.selectedNoteRef]
+    state.selectedNoteRef = state.allSelectedNoteRefs[0]
   },
 
   addNoteObject (state, noteObject) {

@@ -1,28 +1,15 @@
 <template>
   <div class="editor">
-    <div class="editor-title">
+    <section class="editor-title">
       <h1>
         <font-awesome-icon icon="hashtag" />
         {{ selectedNote.title }}
       </h1>
-    </div>
+    </section>
 
-    <b-navbar>
-      <template slot="start">
-        <b-navbar-item>
-          <b-button size="is-small">New</b-button>
-          <b-button size="is-small">Tag</b-button>
-        </b-navbar-item>
-        <b-navbar-item class="buttons is-right">
-          <b-button size="is-small" class="button is-danger">Delete</b-button>
-        </b-navbar-item>
-      </template>
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <div class="buttons"></div>
-        </b-navbar-item>
-      </template>
-    </b-navbar>
+    <section>
+      <b-button @click="deleteNote" size="is-small" class="button is-danger">Delete</b-button>
+    </section>
 
     <textarea id="editorPreview"></textarea>
   </div>
@@ -94,6 +81,11 @@ export default {
 
     saveNoteInState: function (editorText) {
       this.$store.dispatch('saveSelectedNote', editorText)
+    },
+
+    deleteNote: function () {
+      this.$store.dispatch('deleteSelectedNote')
+      this.$store.dispatch('updateAllNotesRef')
     }
   }
 }
