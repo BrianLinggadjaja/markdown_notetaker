@@ -868,6 +868,11 @@ span.CodeMirror-selectedtext {
     margin-bottom: 2rem;
   }
 
+  & hr {
+    background-color: $color-primary;
+    margin: 2rem 0;
+  }
+
   & p {
     margin-bottom: 1.5rem;
   }

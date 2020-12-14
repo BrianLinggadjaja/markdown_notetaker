@@ -7,9 +7,10 @@
       </h1>
     </section>
 
-    <section>
+    <!-- <section>
       <b-button @click="deleteNote" size="is-small" class="button is-danger">Delete</b-button>
-    </section>
+      <b-button @click="deleteNote" size="is-small" class="button is-danger">Update Name</b-button>
+    </section> -->
 
     <textarea id="editorPreview"></textarea>
   </div>
@@ -50,12 +51,108 @@ export default {
     initEditor: function () {
       this.markdownEditor = new SimpleMDE({
         element: document.getElementById('editorPreview'),
-        autosave: true,
+        spellChecker: false,
+        autosave: false,
         status: false,
         hideIcons: ['guide'],
+        autoDownloadFontAwesome: true,
         renderingConfig: {
           codeSyntaxHighlighting: false
-        }
+        },
+        toolbar: [
+          {
+            name: 'heading',
+            action: SimpleMDE.toggleHeadingSmaller,
+            className: 'fa fa-header',
+            title: 'Heading Level'
+          },
+          {
+            name: 'bold',
+            action: SimpleMDE.toggleBold,
+            className: 'fa fa-bold',
+            title: 'Bold'
+          },
+          {
+            name: 'italic',
+            action: SimpleMDE.toggleItalic,
+            className: 'fa fa-italic',
+            title: 'Italic'
+          },
+          '|',
+          {
+            name: 'horizontal-rule',
+            action: SimpleMDE.drawHorizontalRule,
+            className: 'fa fa-minus',
+            title: 'Horizontal Line'
+          },
+          {
+            name: 'quote',
+            action: SimpleMDE.toggleBlockquote,
+            className: 'fa fa-quote-left',
+            title: 'Quote'
+          },
+          {
+            name: 'unordered-list',
+            action: SimpleMDE.toggleUnorderedList,
+            className: 'fa fa-list-ul',
+            title: 'Un-ordered List'
+          },
+          {
+            name: 'ordered-list',
+            action: SimpleMDE.toggleUnorderedList,
+            className: 'fa fa-list-ol',
+            title: 'Ordered List'
+          },
+          '|',
+          {
+            name: 'preview',
+            action: SimpleMDE.togglePreview,
+            className: 'fa fa-eye no-disable',
+            title: 'Toggle Preview'
+          },
+          {
+            name: 'side-by-side',
+            action: SimpleMDE.toggleSideBySide,
+            className: 'fa fa-columns no-disable no-mobile',
+            title: 'Toggle Side by Side (Full-Screen)'
+          },
+          {
+            name: 'fullscreen',
+            action: SimpleMDE.toggleFullScreen,
+            className: 'fa fa-arrows-alt no-disable no-mobile',
+            title: 'Toggle Full-Screen'
+          },
+          '|',
+          {
+            name: 'link',
+            action: SimpleMDE.drawLink,
+            className: 'fa fa-link',
+            title: 'Insert Link'
+          },
+          {
+            name: 'image',
+            action: SimpleMDE.drawImage,
+            className: 'fa fa-image',
+            title: 'Insert Image'
+          },
+          '|',
+          {
+            name: 'custom',
+            action: function customFunction (editor) {
+              console.log(true)
+            },
+            className: 'fa fa-star',
+            title: 'Custom Button'
+          },
+          {
+            name: 'custom',
+            action: function customFunction (editor) {
+              console.log(true)
+            },
+            className: 'fa fa-star',
+            title: 'Custom Button'
+          }
+        ]
       })
 
       this.populateEditorFromState()
