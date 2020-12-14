@@ -46,7 +46,8 @@ export default {
 
   methods: {
     ...mapActions([
-      'saveSelectedNote'
+      'saveSelectedNote',
+      'bookmarkNote'
     ]),
 
     initEditor: function () {
@@ -137,6 +138,12 @@ export default {
             title: 'Insert Image'
           },
           '|',
+          {
+            name: 'custom',
+            action: () => this.$store.dispatch('bookmarkNote', this.selectedNote.title),
+            className: 'icon-edit',
+            title: 'Edit Name'
+          },
           {
             name: 'custom',
             action: () => this.openNoteEditor(),

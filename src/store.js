@@ -79,6 +79,10 @@ const actions = {
 
   updateAllNotesRef ({ commit }) {
     commit('updateAllNotesRefObject')
+  },
+
+  bookmarkNote ({ commit }, selectedNoteRef) {
+    commit('addNoteBookmark', selectedNoteRef)
   }
 }
 
@@ -117,6 +121,15 @@ const mutations = {
 
   updateAllNotesRefObject (state) {
     state.allSelectedNoteRefs = Object.keys(state.savedNotesObj)
+  },
+
+  addNoteBookmark (state, selectedNoteRef) {
+    const arraySet = new Set(...state.bookmarkedNotesRefsArray)
+    const hasNotBookmarked = !arraySet.has(selectedNoteRef)
+
+    if (hasNotBookmarked) {
+      state.bookmarkedNotesRefsArray.unshift(selectedNoteRef)
+    }
   }
 }
 
@@ -132,6 +145,10 @@ const getters = {
 
   getAllNoteRefs: state => {
     return state.allSelectedNoteRefs
+  },
+
+  getAllBookmarkedRefs: state => {
+    return state.bookmarkedNotesRefsArray
   },
 
   getCurrentNoteRef: state => {

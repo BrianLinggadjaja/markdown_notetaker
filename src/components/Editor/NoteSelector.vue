@@ -23,6 +23,9 @@
     <div class="note-wrapper" v-if="(currentNoteSort ==='notes')">
       <note-card :key="note" v-for="note in allNoteRefs" :noteRef="note" />
     </div>
+    <div class="note-wrapper" v-else-if="(currentNoteSort ==='bookmarked')">
+      <note-card :key="note" v-for="note in allBookmarkedRefs" :noteRef="note" />
+    </div>
   </aside>
 </template>
 
@@ -39,7 +42,8 @@ export default {
   computed: {
     ...mapGetters({
       currentNoteSort: 'getCurrentNoteSort',
-      allNoteRefs: 'getAllNoteRefs'
+      allNoteRefs: 'getAllNoteRefs',
+      allBookmarkedRefs: 'getAllBookmarkedRefs'
     }),
 
     findMatchingNote () {
