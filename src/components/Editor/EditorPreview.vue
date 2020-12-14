@@ -1,6 +1,10 @@
 <template>
   <div class="editor">
-    <!-- <b-navbar>
+    <div class="editor-title">
+      <h1>{{ selectedNote.title }}</h1>
+    </div>
+
+    <b-navbar>
       <template slot="start">
         <b-navbar-item>
           <b-button size="is-small">New</b-button>
@@ -15,9 +19,7 @@
           <div class="buttons"></div>
         </b-navbar-item>
       </template>
-    </b-navbar> -->
-
-    <h1>{{ selectedNote.title }}</h1>
+    </b-navbar>
 
     <textarea id="editorPreview"></textarea>
   </div>
@@ -91,5 +93,17 @@ export default {
   display: flex;
   flex-flow: column;
   height: 100%;
+
+  &-title {
+    background-color: $color-primary-lighter;
+    color: $color-primary-invert;
+    padding: 0.5rem 0.75rem;
+
+    & > h1 {
+      font-family: $font-family-header;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+  }
 }
 </style>
