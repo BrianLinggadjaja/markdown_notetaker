@@ -43,6 +43,7 @@ const state = () => ({
     'Example Note': {
       title: 'Example Note',
       markdown: JSON.stringify(exampleNote),
+      isBookmarked: false,
       attachedNotebook: null,
       tags: []
     }

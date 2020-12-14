@@ -20,7 +20,7 @@
       <button @click="openNoteCreationModal()" class="button is-primary">Create Note</button>
     </div>
 
-    <div v-if="(currentNoteSort ==='notes')">
+    <div class="note-wrapper" v-if="(currentNoteSort ==='notes')">
       <note-card :key="note" v-for="note in allNoteRefs" :noteRef="note" />
     </div>
   </aside>
@@ -88,6 +88,8 @@ export default {
 
 <style lang="scss" scoped>
 .note-selector {
+  display: flex !important;
+  flex-flow: column;
   background-color: $color-secondary;
   color: $color-secondary-invert;
   box-shadow: 2px 0 3px inset $color-shadow-dark;
@@ -111,5 +113,10 @@ export default {
       width: 100%;
     }
   }
+}
+
+.note-wrapper {
+  flex: 100;
+  overflow: auto;
 }
 </style>
