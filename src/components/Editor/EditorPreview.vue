@@ -55,7 +55,7 @@ export default {
         autosave: false,
         status: false,
         hideIcons: ['guide'],
-        autoDownloadFontAwesome: true,
+        autoDownloadFontAwesome: false,
         renderingConfig: {
           codeSyntaxHighlighting: false
         },
@@ -63,93 +63,91 @@ export default {
           {
             name: 'heading',
             action: SimpleMDE.toggleHeadingSmaller,
-            className: 'fa fa-header',
+            className: 'icon-header',
             title: 'Heading Level'
           },
           {
             name: 'bold',
             action: SimpleMDE.toggleBold,
-            className: 'fa fa-bold',
+            className: 'icon-bold',
             title: 'Bold'
           },
           {
             name: 'italic',
             action: SimpleMDE.toggleItalic,
-            className: 'fa fa-italic',
+            className: 'icon-italic',
             title: 'Italic'
           },
           '|',
           {
             name: 'horizontal-rule',
             action: SimpleMDE.drawHorizontalRule,
-            className: 'fa fa-minus',
+            className: 'icon-minus',
             title: 'Horizontal Line'
           },
           {
             name: 'quote',
             action: SimpleMDE.toggleBlockquote,
-            className: 'fa fa-quote-left',
+            className: 'icon-quote-left',
             title: 'Quote'
           },
           {
             name: 'unordered-list',
             action: SimpleMDE.toggleUnorderedList,
-            className: 'fa fa-list-ul',
+            className: 'icon-list-ul',
             title: 'Un-ordered List'
           },
           {
             name: 'ordered-list',
-            action: SimpleMDE.toggleUnorderedList,
-            className: 'fa fa-list-ol',
+            action: SimpleMDE.toggleOrderedList,
+            className: 'icon-list-ol',
             title: 'Ordered List'
           },
           '|',
           {
             name: 'preview',
             action: SimpleMDE.togglePreview,
-            className: 'fa fa-eye no-disable',
+            className: 'icon-eye no-disable',
             title: 'Toggle Preview'
           },
           {
             name: 'side-by-side',
             action: SimpleMDE.toggleSideBySide,
-            className: 'fa fa-columns no-disable no-mobile',
+            className: 'icon-columns no-disable no-mobile',
             title: 'Toggle Side by Side (Full-Screen)'
           },
           {
             name: 'fullscreen',
             action: SimpleMDE.toggleFullScreen,
-            className: 'fa fa-arrows-alt no-disable no-mobile',
+            className: 'icon-arrows-alt no-disable no-mobile',
             title: 'Toggle Full-Screen'
           },
           '|',
           {
             name: 'link',
             action: SimpleMDE.drawLink,
-            className: 'fa fa-link',
+            className: 'icon-chain',
             title: 'Insert Link'
           },
           {
             name: 'image',
             action: SimpleMDE.drawImage,
-            className: 'fa fa-image',
+            className: 'icon-image',
             title: 'Insert Image'
           },
           '|',
           {
             name: 'custom',
-            action: function customFunction (editor) {
+            action: () => {
               console.log(true)
             },
-            className: 'fa fa-star',
-            title: 'Custom Button'
+            className: 'icon-edit',
+            title: 'Edit Name'
           },
           {
             name: 'custom',
-            action: function customFunction (editor) {
-              console.log(true)
-            },
-            className: 'fa fa-star',
+            action: () => this.deleteNote(),
+            className: 'icon-trash',
             title: 'Custom Button'
           }
         ]
