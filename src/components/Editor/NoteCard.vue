@@ -61,6 +61,7 @@ export default {
 <style lang="scss">
 .note {
   margin-bottom: 0.5rem !important;
+  padding: 0.75rem 1rem !important;
 
   &-title {
     font-family: $font-family-header;
