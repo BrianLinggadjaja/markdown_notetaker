@@ -12,10 +12,21 @@
     </div>
     <p class="menu-label">Note Selector</p>
     <div class="note-selector__create-note">
-      <button @click="isModalActive = true" class="button is-primary">Create Note</button>
+      <button @click="isModalOpen = true" class="button is-primary">Create Note</button>
     </div>
 
-    <note-creator :isNoteCreatorOpen="isModalActive" />
+    <b-modal
+      v-model="isModalOpen"
+      has-modal-card
+      trap-focus
+      :destroy-on-hide="true"
+      aria-role="dialog"
+      aria-modal>
+      <div>
+        <note-creator />
+      </div>
+    </b-modal>
+
     <note-card />
   </aside>
 </template>
@@ -32,12 +43,8 @@ export default {
 
   data () {
     return {
-      isModalActive: false
+      isModalOpen: false
     }
-  },
-
-  updated () {
-    console.log(this.isModalActive)
   }
 }
 </script>

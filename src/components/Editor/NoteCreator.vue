@@ -1,27 +1,13 @@
 <template>
-  <b-modal
-    v-model="isModalOpen"
-    @close="console.log('hello')"
-    has-modal-card
-    trap-focus
-    :destroy-on-hide="true"
-    aria-role="dialog"
-    aria-modal>
-    <div>
-      Hello world
-      <button class="button is-primary">Hello</button>
-    </div>
-  </b-modal>
+  <button @click="test()" class="button is-primary">Hello</button>
 </template>
 
 <script>
 export default {
-  props: {
-    isNoteCreatorOpen: Boolean
-  },
-
-  watch: {
-    isModalOpen: this.isNoteCreatorOpen
+  methods: {
+    test: function () {
+      console.log('test')
+    }
   }
 }
 </script>
