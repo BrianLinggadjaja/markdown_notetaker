@@ -1,6 +1,9 @@
 <template>
   <a @click="updateSelectedNote()" class="note box">
-    <h1 v-if="title" class="note-title">{{ title }}</h1>
+    <h1 v-if="title" class="note-title">
+      <font-awesome-icon icon="hashtag" />
+      {{ title }}
+    </h1>
     <h2 v-if="attachedNotebook" class="note-book">School Lectures</h2>
     <b-taglist v-if="(tags.length > 0)" class="note__tag-list">
       <b-tag type="is-red">First</b-tag>

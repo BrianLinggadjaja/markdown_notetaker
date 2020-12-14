@@ -1,7 +1,10 @@
 <template>
   <div class="editor">
     <div class="editor-title">
-      <h1>{{ selectedNote.title }}</h1>
+      <h1>
+        <font-awesome-icon icon="hashtag" />
+        {{ selectedNote.title }}
+      </h1>
     </div>
 
     <b-navbar>
