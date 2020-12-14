@@ -857,10 +857,14 @@ span.CodeMirror-selectedtext {
     background-color: $color-secondary-darker;
   }
 
-  ul,
-  ol {
+  & ul,
+  & ol {
     padding: 0 2rem;
     margin-bottom: 2rem;
+  }
+
+  & p {
+    margin-bottom: 1.5rem;
   }
 
   & ul {
@@ -916,5 +920,11 @@ span.CodeMirror-selectedtext {
   & .cm-header-5,
   & h5 {
     font-size: 1.5rem !important;
+  }
+}
+
+.editor-preview-side {
+  & p {
+    margin-bottom: 1.5rem;
   }
 }
