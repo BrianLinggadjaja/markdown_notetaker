@@ -1,8 +1,8 @@
 <template>
-  <main class="column is-10">
+  <main class="column">
     <div class="editor-page columns">
       <note-selector />
-      <section class="editor-wrapper column is-9">
+      <section class="editor-wrapper column">
         <editor-preview />
       </section>
     </div>
@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main {
+  flex: 100;
+}
+
 .editor-page {
   @media screen and (min-width: $tablet) {
     height: 100vh;
