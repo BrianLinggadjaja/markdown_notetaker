@@ -855,6 +855,11 @@ span.CodeMirror-selectedtext {
 
   & blockquote {
     background-color: $color-secondary-darker;
+    padding: 0.5rem 0.75rem;
+
+    & > p {
+      margin-bottom: 0;
+    }
   }
 
   & ul,
