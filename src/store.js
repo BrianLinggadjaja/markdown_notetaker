@@ -37,6 +37,7 @@ I am an Ordered List
 
 const state = () => ({
   selectedNoteSort: 'notes',
+  allSelectedNoteRefs: [],
   selectedNoteRef: 'Example Note',
   savedNotesObj: {
     'Example Note': {
@@ -65,6 +66,10 @@ const actions = {
 
   createNote ({ commit }, noteObject) {
     commit('addNoteObject', noteObject)
+  },
+
+  updateAllNotesRef ({ commit }) {
+    commit('updateAllNotesRefObject')
   }
 }
 
@@ -87,6 +92,10 @@ const mutations = {
 
     state.savedNotesObj[noteObject.title] = noteObject
     state.savedNotesObj[noteObject.title].markdown = defaultMarkdownText
+  },
+
+  updateAllNotesRefObject (state) {
+    state.allSelectedNoteRefs = Object.keys(state.savedNotesObj)
   }
 }
 
@@ -101,7 +110,7 @@ const getters = {
   },
 
   getAllNoteRefs: state => {
-    return Object.keys(state.savedNotesObj)
+    return state.allSelectedNoteRefs
   },
 
   getCurrentNoteRef: state => {

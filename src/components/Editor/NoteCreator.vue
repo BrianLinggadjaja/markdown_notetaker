@@ -78,6 +78,7 @@ export default {
       }
 
       this.$store.dispatch('createNote', cleanNoteObj)
+      this.$store.dispatch('updateAllNotesRef')
       this.$store.dispatch('changeSelectedNote', this.title)
     },
 

@@ -67,6 +67,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.$store.dispatch('updateAllNotesRef')
+  },
+
   data () {
     return {
       lightMode: true
