@@ -42,6 +42,7 @@ const state = () => ({
     'Example Note': {
       title: 'Example Note',
       markdown: JSON.stringify(exampleNote),
+      attachedNotebook: null,
       tags: []
     }
   },
@@ -52,6 +53,10 @@ const state = () => ({
 const actions = {
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
+  },
+
+  changeSelectedNote ({ commit }, selectedNoteRef) {
+    commit('updateSelectedNoteRef', selectedNoteRef)
   },
 
   saveSelectedNote ({ commit }, updatedNote) {
@@ -67,6 +72,10 @@ const actions = {
 const mutations = {
   updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
+  },
+
+  updateSelectedNoteRef (state, selectedNoteRef) {
+    state.selectedNoteRef = selectedNoteRef
   },
 
   updateCurrentSelectedNote (state, updatedNote) {
@@ -85,6 +94,10 @@ const mutations = {
 const getters = {
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
+  },
+
+  getAllNotesObj: state => {
+    return state.savedNotesObj
   },
 
   getAllNoteRefs: state => {

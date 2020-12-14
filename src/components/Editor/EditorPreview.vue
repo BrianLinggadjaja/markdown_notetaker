@@ -48,6 +48,10 @@ export default {
     this.initEditor()
   },
 
+  updated () {
+    this.populateEditorFromState()
+  },
+
   methods: {
     ...mapActions([
       'saveSelectedNote'
@@ -64,8 +68,7 @@ export default {
         }
       })
 
-      // Load selected note into editor when initalized
-      this.markdownEditor.value(JSON.parse(this.selectedNote.markdown))
+      this.populateEditorFromState()
 
       // Attach instance to "this"
       const instance = this
@@ -75,6 +78,10 @@ export default {
         instance.saveNoteInState(JSON.stringify(editorText))
         instance.copyEditorMarkdown(editorText)
       })
+    },
+
+    populateEditorFromState: function () {
+      this.markdownEditor.value(JSON.parse(this.selectedNote.markdown))
     },
 
     // Save text to clipboard

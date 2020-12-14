@@ -15,17 +15,27 @@
       <button @click="openNoteCreationModal()" class="button is-primary">Create Note</button>
     </div>
 
-    <note-card />
+    <div v-if="(currentNoteSort ==='notes')">
+      <note-card :key="note" v-for="note in allNoteRefs" :noteRef="note" />
+    </div>
   </aside>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import NoteCard from './NoteCard'
 import NoteCreator from './NoteCreator'
 
 export default {
   components: {
     NoteCard
+  },
+
+  computed: {
+    ...mapGetters({
+      currentNoteSort: 'getCurrentNoteSort',
+      allNoteRefs: 'getAllNoteRefs'
+    })
   },
 
   methods: {

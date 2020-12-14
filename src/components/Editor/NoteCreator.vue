@@ -67,6 +67,7 @@ export default {
 
     createNewNote: function () {
       this.validateNewNote()
+      this.$emit('close')
     },
 
     validateNewNote: function () {
