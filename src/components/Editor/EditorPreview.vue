@@ -20,6 +20,7 @@
 import SimpleMDE from 'simplemde'
 import '@/scss/libraries/_simplemde.scss'
 import { mapActions, mapGetters } from 'vuex'
+import NoteEditor from './NoteEditor'
 
 export default {
   computed: {
@@ -138,9 +139,7 @@ export default {
           '|',
           {
             name: 'custom',
-            action: () => {
-              console.log(true)
-            },
+            action: () => this.openNoteEditor(),
             className: 'icon-edit',
             title: 'Edit Name'
           },
@@ -148,7 +147,7 @@ export default {
             name: 'custom',
             action: () => this.deleteNote(),
             className: 'icon-trash',
-            title: 'Custom Button'
+            title: 'Delete Note'
           }
         ]
       })
@@ -172,6 +171,16 @@ export default {
     // Save text to clipboard
     copyEditorMarkdown: function (editorText) {
       navigator.clipboard.writeText(editorText)
+    },
+
+    openNoteEditor: function () {
+      this.$buefy.modal.open({
+        parent: this,
+        component: NoteEditor,
+        hasModalCard: true,
+        trapFocus: true,
+        ariaModal: true
+      })
     },
 
     saveNoteInState: function (editorText) {

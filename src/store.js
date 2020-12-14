@@ -73,6 +73,10 @@ const actions = {
     commit('addNoteObject', noteObject)
   },
 
+  updateNote ({ commit }, newNoteObject) {
+    commit('updateNoteObject', newNoteObject)
+  },
+
   updateAllNotesRef ({ commit }) {
     commit('updateAllNotesRefObject')
   }
@@ -102,6 +106,13 @@ const mutations = {
 
     state.savedNotesObj[noteObject.title] = noteObject
     state.savedNotesObj[noteObject.title].markdown = defaultMarkdownText
+  },
+
+  updateNoteObject (state, newNoteObject) {
+    // Populate new note with newNoteObject & Transfer the markdown
+    state.savedNotesObj[newNoteObject.title] = newNoteObject
+    state.savedNotesObj[newNoteObject.title].markdown = state.savedNotesObj[state.selectedNoteRef].markdown
+    delete state.savedNotesObj[state.selectedNoteRef]
   },
 
   updateAllNotesRefObject (state) {

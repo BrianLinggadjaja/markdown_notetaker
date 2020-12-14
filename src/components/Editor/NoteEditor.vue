@@ -1,13 +1,13 @@
 <template>
   <div class="modal-card" style="width: auto">
     <section class="modal-card-head">
-      <p class="modal-card-title">Note Creation</p>
+      <p class="modal-card-title">Note Editor</p>
     </section>
 
     <section class="modal-card-body">
-      <b-field label="Note Title (Required)">
+      <b-field label="New Note Title (Required)">
         <b-field>
-          <b-input placeholder="New note"
+          <b-input placeholder="New note title"
             v-model="title"
             icon-pack="fa"
             icon="hashtag"
@@ -42,7 +42,7 @@
 
     <section class="modal-card-foot">
       <button class="button" type="button" @click="$emit('close')">Close</button>
-      <button class="button is-accent" @click="createNewNote()">Create Note</button>
+      <button class="button is-accent" @click="updateNote()">Update Note</button>
     </section>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
       'changeSelectedNote'
     ]),
 
-    createNewNote: function () {
+    updateNote: function () {
       this.validateNewNote()
       this.$emit('close')
     },
@@ -77,7 +77,7 @@ export default {
         tags: this.attachedTags
       }
 
-      this.$store.dispatch('createNote', cleanNoteObj)
+      this.$store.dispatch('updateNote', cleanNoteObj)
       this.$store.dispatch('updateAllNotesRef')
       this.$store.dispatch('changeSelectedNote', this.title)
     },
