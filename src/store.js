@@ -104,6 +104,10 @@ const getters = {
     return Object.keys(state.savedNotesObj)
   },
 
+  getCurrentNoteRef: state => {
+    return state.selectedNoteRef
+  },
+
   getSelectedNote: state => {
     const parsedNote = state.savedNotesObj[state.selectedNoteRef]
     return parsedNote

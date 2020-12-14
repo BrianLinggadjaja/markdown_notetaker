@@ -1,5 +1,5 @@
 <template>
-  <a @click="updateSelectedNote()" class="note box">
+  <a @click="updateSelectedNote()" :class="[ (currentNoteRef === title) ? 'selected': null, 'note box']">
     <h1 v-if="title" class="note-title">
       <font-awesome-icon icon="hashtag" />
       {{ title }}
@@ -30,12 +30,14 @@ export default {
 
   computed: {
     ...mapGetters({
-      allNotes: 'getAllNotesObj'
+      allNotes: 'getAllNotesObj',
+      currentNoteRef: 'getCurrentNoteRef'
     })
   },
 
   data () {
     return {
+      isCurrentSelectedNote: false,
       title: null,
       attachedNotebook: null,
       tags: []
@@ -47,6 +49,15 @@ export default {
     this.title = currentNoteObj.title
     this.attachedNotebook = currentNoteObj.attachedNotebook
     this.tags = currentNoteObj.tags
+
+    if (currentNoteObj.title === this.currentNoteRef) {
+      console.log('yes')
+      this.isCurrentSelectedNote = true
+    }
+  },
+
+  updated () {
+    console.log(true)
   },
 
   methods: {
@@ -65,6 +76,14 @@ export default {
 .note {
   margin-bottom: 0.5rem !important;
   padding: 0.75rem 1rem !important;
+
+  &.selected {
+    background-color: $color-primary-lighter !important;
+
+    & > h1 {
+      color: $color-primary-invert;
+    }
+  }
 
   &-title {
     font-family: $font-family-header;
