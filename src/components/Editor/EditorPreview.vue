@@ -74,7 +74,7 @@ export default {
       const instance = this
       this.markdownEditor.codemirror.on('change', function () {
         const editorText = instance.markdownEditor.value()
-        console.log(editorText)
+
         instance.saveNoteInState(JSON.stringify(editorText))
         instance.copyEditorMarkdown(editorText)
       })

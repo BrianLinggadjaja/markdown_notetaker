@@ -23,8 +23,7 @@
             v-model="attachedNotebook"
             icon-pack="fa"
             icon="book"
-            maxlength="36"
-            required>
+            maxlength="36">
           </b-input>
         </b-field>
       </b-field>
