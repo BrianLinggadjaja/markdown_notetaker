@@ -141,7 +141,7 @@ export default {
           {
             name: 'custom',
             action: () => this.$store.dispatch('bookmarkNote', this.selectedNote.title),
-            className: 'icon-edit',
+            className: 'icon-bookmark',
             title: 'Edit Name'
           },
           {

@@ -962,6 +962,12 @@ span.CodeMirror-selectedtext {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-book:before {
+  content: "\e90f";
+}
+.icon-bookmark:before {
+  content: "\e90e";
+}
 .icon-edit:before {
   content: "\e902";
 }
@@ -1004,4 +1010,3 @@ span.CodeMirror-selectedtext {
 .icon-header:before {
   content: "\e901";
 }
-
