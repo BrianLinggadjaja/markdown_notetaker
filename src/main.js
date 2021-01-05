@@ -12,7 +12,7 @@ import GlobalStore from './store'
 // Style Libraries
 import Buefy from 'buefy'
 import { dom, library } from '@fortawesome/fontawesome-svg-core'
-import { faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage, faEdit} from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Global Style
