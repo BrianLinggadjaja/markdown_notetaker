@@ -15,39 +15,39 @@
   * Default State
   * Set default values for each value stored
   */
-const exampleNote = `# Example Note
-This is an example note...
+// const exampleNote = `# Example Note
+// This is an example note...
 
-## Text Modification
-I am **Bold**
-I am *Italic*
+// ## Text Modification
+// I am **Bold**
+// I am *Italic*
 
-### Block Level
-> I am a Block
+// ### Block Level
+// > I am a Block
 
-I am an Un-ordered List
-* Test 1
-* Test 2
-* Test 3
+// I am an Un-ordered List
+// * Test 1
+// * Test 2
+// * Test 3
 
-I am an Ordered List
-1. Test 1
-2. Test 2
-3. Test 3`
+// I am an Ordered List
+// 1. Test 1
+// 2. Test 2
+// 3. Test 3`
+
+// 'Example Note': {
+//   title: 'Example Note',
+//   markdown: JSON.stringify(exampleNote),
+//   isBookmarked: false,
+//   attachedNotebook: null,
+//   tags: []
+// }
 
 const state = () => ({
   selectedNoteSort: 'notes',
   allSelectedNoteRefs: [],
-  selectedNoteRef: 'Example Note',
-  savedNotesObj: {
-    'Example Note': {
-      title: 'Example Note',
-      markdown: JSON.stringify(exampleNote),
-      isBookmarked: false,
-      attachedNotebook: null,
-      tags: []
-    }
-  },
+  selectedNoteRef: null,
+  savedNotesObj: {},
   bookmarkedNotesRefsArray: []
 })
 
@@ -55,6 +55,7 @@ const state = () => ({
 const actions = {
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
+    commit('resetSelectedNoteRef')
   },
 
   changeSelectedNote ({ commit }, selectedNoteRef) {
@@ -67,6 +68,7 @@ const actions = {
 
   deleteSelectedNote ({ commit }) {
     commit('removeCurrentNoteRefFromObj')
+    commit('resetSelectedNoteRef')
   },
 
   createNote ({ commit }, noteObject) {
@@ -93,7 +95,13 @@ const mutations = {
   },
 
   updateSelectedNoteRef (state, selectedNoteRef) {
-    state.selectedNoteRef = selectedNoteRef
+    // Check if note exists
+    const selectedNote = state.savedNotesObj[selectedNoteRef]
+    if (selectedNote) {
+      state.selectedNoteRef = selectedNoteRef
+    } else {
+      state.selectedNoteRef = null
+    }
   },
 
   updateCurrentSelectedNote (state, updatedNote) {
@@ -103,6 +111,10 @@ const mutations = {
   removeCurrentNoteRefFromObj (state) {
     delete state.savedNotesObj[state.selectedNoteRef]
     state.selectedNoteRef = state.allSelectedNoteRefs[0]
+  },
+
+  resetSelectedNoteRef (state) {
+    state.selectedNoteRef = null
   },
 
   addNoteObject (state, noteObject) {
