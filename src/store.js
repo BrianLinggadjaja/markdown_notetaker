@@ -1,3 +1,4 @@
+// Example note markdown
 const exampleMarkdown = `# Example Note
 This is an example note...
 
