@@ -47,7 +47,16 @@ export default {
     }),
 
     findMatchingNote () {
-      return this.allNoteRefs.filter((option) => {
+      let sortFilter
+      switch (this.currentNoteSort) {
+        case 'bookmarked':
+          sortFilter = this.allBookmarkedRefs
+          break
+        default:
+          sortFilter = this.allNoteRefs
+      }
+
+      return sortFilter.filter((option) => {
         return option
           .toString()
           .toLowerCase()
