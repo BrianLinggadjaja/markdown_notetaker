@@ -1,7 +1,8 @@
 <template>
   <a @click="updateSelectedNote()" :class="[ (currentNoteRef === title) ? 'selected': null, 'note box']">
     <h1 v-if="title" class="note-title">
-      <font-awesome-icon icon="hashtag" />
+      <font-awesome-icon v-if="currentNoteSort === 'notes'" icon="hashtag" />
+      <font-awesome-icon v-else-if="currentNoteSort === 'bookmarked'" class="mr-1" icon="bookmark" />
       {{ title }}
     </h1>
     <h2 v-if="attachedNotebook" class="note-book">School Lectures</h2>
@@ -31,6 +32,7 @@ export default {
   computed: {
     ...mapGetters({
       allNotes: 'getAllNotesObj',
+      currentNoteSort: 'getCurrentNoteSort',
       currentNoteRef: 'getCurrentNoteRef'
     })
   },
