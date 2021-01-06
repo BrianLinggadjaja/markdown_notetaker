@@ -29,10 +29,6 @@ export default {
     ...mapGetters({
       selectedNote: 'getCurrentNoteRef'
     })
-  },
-
-  updated () {
-    console.log(true)
   }
 }
 </script>
