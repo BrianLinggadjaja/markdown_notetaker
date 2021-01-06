@@ -35,11 +35,15 @@
 // }
 
 const state = () => ({
+  // General
+  isUsersInitalVisit: true,
   selectedNoteSort: 'notes',
-  allSelectedNoteRefs: [],
   selectedNoteRef: null,
-  savedNotesObj: {},
-  bookmarkedNotesRefsArray: []
+  // Global
+  allSavedNotes: {},
+  allSelectedNoteRefs: [],
+  allBookmarkedNoteRefs: []
+  // Sort
 })
 
 // Actions
