@@ -134,7 +134,7 @@ const mutations = {
   },
 
   updateAllNotesRefObject (state) {
-    state.allNoteRefs = Object.keys(state.allSavedNotes)
+    state.allNoteRefs = Object.keys(state.allSavedNotes).reverse()
   },
 
   addNoteBookmark (state, selectedNoteRef) {
