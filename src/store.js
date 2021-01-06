@@ -1,38 +1,22 @@
-// 'Example Note Object': {
-//   title: 'Example Note',
-//   markdown: JSON.stringify(exampleNote),
-//   isBookmarked: false,
-//   attachedNotebookRef: null,
-//   tags: []
-// }
+const exampleMarkdown = `# Example Note
+This is an example note...
 
-// const exampleNote = `# Example Note
-// This is an example note...
+## Text Modification
+I am **Bold**
+I am *Italic*
 
-// ## Text Modification
-// I am **Bold**
-// I am *Italic*
+### Block Level
+> I am a Block
 
-// ### Block Level
-// > I am a Block
+I am an Un-ordered List
+* Test 1
+* Test 2
+* Test 3
 
-// I am an Un-ordered List
-// * Test 1
-// * Test 2
-// * Test 3
-
-// I am an Ordered List
-// 1. Test 1
-// 2. Test 2
-// 3. Test 3`
-
-// 'Example Note': {
-//   title: 'Example Note',
-//   markdown: JSON.stringify(exampleNote),
-//   isBookmarked: false,
-//   attachedNotebook: null,
-//   tags: []
-// }
+I am an Ordered List
+1. Test 1
+2. Test 2
+3. Test 3`
 
 const state = () => ({
   // General
@@ -41,13 +25,20 @@ const state = () => ({
   selectedNoteRef: null,
   // Global
   allSavedNotes: {},
-  allSelectedNoteRefs: [],
+  allNoteRefs: [],
   allBookmarkedNoteRefs: []
   // Sort
 })
 
 // Actions
 const actions = {
+  addInitalNote ({ commit }) {
+    commit('addInitalNote')
+    commit('updateAllNotesRefObject')
+    commit('updateSelectedNoteRef', 'Example Note')
+    commit('markInitalVisit')
+  },
+
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
     commit('resetSelectedNoteRef')
@@ -85,13 +76,28 @@ const actions = {
 
 // Mutations
 const mutations = {
+  addInitalNote (state) {
+    // Create inital note
+    state.allSavedNotes['Example Note'] = {
+      title: 'Example Note',
+      markdown: JSON.stringify(exampleMarkdown),
+      isBookmarked: false,
+      attachedNotebookRef: null,
+      tags: []
+    }
+  },
+
+  markInitalVisit (state) {
+    state.isUsersInitalVisit = false
+  },
+
   updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
   },
 
   updateSelectedNoteRef (state, selectedNoteRef) {
     // Check if note exists
-    const selectedNote = state.savedNotesObj[selectedNoteRef]
+    const selectedNote = state.allSavedNotes[selectedNoteRef]
     if (selectedNote) {
       state.selectedNoteRef = selectedNoteRef
     } else {
@@ -100,12 +106,12 @@ const mutations = {
   },
 
   updateCurrentSelectedNote (state, updatedNote) {
-    state.savedNotesObj[state.selectedNoteRef].markdown = updatedNote
+    state.allSavedNotes[state.selectedNoteRef].markdown = updatedNote
   },
 
   removeCurrentNoteRefFromObj (state) {
-    delete state.savedNotesObj[state.selectedNoteRef]
-    state.selectedNoteRef = state.allSelectedNoteRefs[0]
+    delete state.allSavedNotes[state.selectedNoteRef]
+    state.selectedNoteRef = state.allNoteRefs[0]
   },
 
   resetSelectedNoteRef (state) {
@@ -115,47 +121,51 @@ const mutations = {
   addNoteObject (state, noteObject) {
     const defaultMarkdownText = JSON.stringify('# New Note')
 
-    state.savedNotesObj[noteObject.title] = noteObject
-    state.savedNotesObj[noteObject.title].markdown = defaultMarkdownText
+    state.allSavedNotes[noteObject.title] = noteObject
+    state.allSavedNotes[noteObject.title].markdown = defaultMarkdownText
   },
 
   updateNoteObject (state, newNoteObject) {
     // Populate new note with newNoteObject & Transfer the markdown
-    state.savedNotesObj[newNoteObject.title] = newNoteObject
-    state.savedNotesObj[newNoteObject.title].markdown = state.savedNotesObj[state.selectedNoteRef].markdown
-    delete state.savedNotesObj[state.selectedNoteRef]
+    state.allSavedNotes[newNoteObject.title] = newNoteObject
+    state.allSavedNotes[newNoteObject.title].markdown = state.allSavedNotes[state.selectedNoteRef].markdown
+    delete state.allSavedNotes[state.selectedNoteRef]
   },
 
   updateAllNotesRefObject (state) {
-    state.allSelectedNoteRefs = Object.keys(state.savedNotesObj)
+    state.allNoteRefs = Object.keys(state.allSavedNotes)
   },
 
   addNoteBookmark (state, selectedNoteRef) {
-    const arraySet = new Set(...state.bookmarkedNotesRefsArray)
+    const arraySet = new Set(...state.allBookmarkedNoteRefs)
     const hasNotBookmarked = !arraySet.has(selectedNoteRef)
 
     if (hasNotBookmarked) {
-      state.bookmarkedNotesRefsArray.unshift(selectedNoteRef)
+      state.allBookmarkedNoteRefs.unshift(selectedNoteRef)
     }
   }
 }
 
 // Getters
 const getters = {
+  hasInitalVisit: state => {
+    return state.isUsersInitalVisit
+  },
+
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
   },
 
   getAllNotesObj: state => {
-    return state.savedNotesObj
+    return state.allSavedNotes
   },
 
   getAllNoteRefs: state => {
-    return state.allSelectedNoteRefs
+    return state.allNoteRefs
   },
 
   getAllBookmarkedRefs: state => {
-    return state.bookmarkedNotesRefsArray
+    return state.allBookmarkedNoteRefs
   },
 
   getCurrentNoteRef: state => {
@@ -163,7 +173,7 @@ const getters = {
   },
 
   getSelectedNote: state => {
-    const parsedNote = state.savedNotesObj[state.selectedNoteRef]
+    const parsedNote = state.allSavedNotes[state.selectedNoteRef]
     return parsedNote
   }
 }

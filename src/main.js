@@ -22,9 +22,6 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Buefy)
 
-// Vuex Initalization
-const store = new Vuex.Store(GlobalStore)
-
 // Vuex Persistent State Initalization
 const debug = process.env.NODE_ENV !== 'production'
 GlobalStore.strict = debug
@@ -34,6 +31,9 @@ const persistedStore = new VuexPersistence({
 })
 
 GlobalStore.plugins = [persistedStore.plugin] // Attach Plugins to Vuex store
+
+// Vuex Initalization
+const store = new Vuex.Store(GlobalStore)
 
 // Vue Router
 const router = new VueRouter({

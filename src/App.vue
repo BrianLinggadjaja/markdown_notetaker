@@ -6,11 +6,30 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import NoteSorter from './components/NoteSorter'
 
 export default {
   components: {
     NoteSorter
+  },
+
+  computed: {
+    ...mapGetters({
+      hasInitalVisit: 'hasInitalVisit'
+    })
+  },
+
+  mounted () {
+    if (this.hasInitalVisit) {
+      this.$store.dispatch('addInitalNote')
+    }
+  },
+
+  methods: {
+    ...mapActions([
+      'addInitalNote'
+    ])
   }
 }
 </script>
