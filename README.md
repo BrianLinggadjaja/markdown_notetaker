@@ -1,6 +1,7 @@
 # Simple Markdown Notetaker
 
-![Notetaking WebApp Editor](https://repository-images.githubusercontent.com/302704128/12744400-4ec7-11eb-96e0-44f6728d59af)
+## HOSTED ON GITHUB PAGES
+https://simple-markdown-notetaker.github.io/
 
 ## Project Setup
 

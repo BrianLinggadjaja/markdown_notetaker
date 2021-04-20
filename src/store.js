@@ -1,5 +1,21 @@
-// Example note markdown
-const exampleMarkdown = `# Example Note
+/*
+  * How Vuex Works
+  * States are set with inital/default values
+  * Each state is modified within the application by calling an "action"
+  * An "action" is usually an interaction between the user, such as "addToCart"
+  * "actions" are used to run any asyncronus operation and "commits" a "mutation" when done
+  * "mutations" handle the actual state changes and are purely syncronus code
+  * Once the "state" values change when a mutation is ran, you will be able to recieve any updates by calling a "getter"
+  *
+  * In total, data is flowing in one direction from...
+  * Button Press (Calls "Action") -> "Action" runs any asyncronus code (API calls usually); if not "commit" a "mutation" -> "Mutations" modify the "State" -> App can recieve updates via "Getters"
+  * /
+
+/*
+  * Default State
+  * Set default values for each value stored
+  */
+const exampleNote = `# Example Note
 This is an example note...
 
 ## Text Modification
@@ -20,29 +36,25 @@ I am an Ordered List
 3. Test 3`
 
 const state = () => ({
-  // General
-  isUsersInitalVisit: true,
   selectedNoteSort: 'notes',
-  selectedNoteRef: null,
-  // Global
-  allSavedNotes: {},
-  allNoteRefs: [],
-  allBookmarkedNoteRefs: []
-  // Sort
+  allSelectedNoteRefs: [],
+  selectedNoteRef: 'Example Note',
+  savedNotesObj: {
+    'Example Note': {
+      title: 'Example Note',
+      markdown: JSON.stringify(exampleNote),
+      isBookmarked: false,
+      attachedNotebook: null,
+      tags: []
+    }
+  },
+  bookmarkedNotesRefsArray: []
 })
 
 // Actions
 const actions = {
-  addInitalNote ({ commit }) {
-    commit('addInitalNote')
-    commit('updateAllNotesRefObject')
-    commit('updateSelectedNoteRef', 'Example Note')
-    commit('markInitalVisit')
-  },
-
   selectNoteSort ({ commit }, selectedSortName) {
     commit('updateNoteSort', selectedSortName)
-    commit('resetSelectedNoteRef')
   },
 
   changeSelectedNote ({ commit }, selectedNoteRef) {
@@ -55,7 +67,6 @@ const actions = {
 
   deleteSelectedNote ({ commit }) {
     commit('removeCurrentNoteRefFromObj')
-    commit('resetSelectedNoteRef')
   },
 
   createNote ({ commit }, noteObject) {
@@ -77,96 +88,67 @@ const actions = {
 
 // Mutations
 const mutations = {
-  addInitalNote (state) {
-    // Create inital note
-    state.allSavedNotes['Example Note'] = {
-      title: 'Example Note',
-      markdown: JSON.stringify(exampleMarkdown),
-      isBookmarked: false,
-      attachedNotebookRef: null,
-      tags: []
-    }
-  },
-
-  markInitalVisit (state) {
-    state.isUsersInitalVisit = false
-  },
-
   updateNoteSort (state, selectedSortName) {
     state.selectedNoteSort = selectedSortName
   },
 
   updateSelectedNoteRef (state, selectedNoteRef) {
-    // Check if note exists
-    const selectedNote = state.allSavedNotes[selectedNoteRef]
-    if (selectedNote) {
-      state.selectedNoteRef = selectedNoteRef
-    } else {
-      state.selectedNoteRef = null
-    }
+    state.selectedNoteRef = selectedNoteRef
   },
 
   updateCurrentSelectedNote (state, updatedNote) {
-    state.allSavedNotes[state.selectedNoteRef].markdown = updatedNote
+    state.savedNotesObj[state.selectedNoteRef].markdown = updatedNote
   },
 
   removeCurrentNoteRefFromObj (state) {
-    delete state.allSavedNotes[state.selectedNoteRef]
-    state.selectedNoteRef = state.allNoteRefs[0]
-  },
-
-  resetSelectedNoteRef (state) {
-    state.selectedNoteRef = null
+    delete state.savedNotesObj[state.selectedNoteRef]
+    state.selectedNoteRef = state.allSelectedNoteRefs[0]
   },
 
   addNoteObject (state, noteObject) {
     const defaultMarkdownText = JSON.stringify('# New Note')
 
-    state.allSavedNotes[noteObject.title] = noteObject
-    state.allSavedNotes[noteObject.title].markdown = defaultMarkdownText
+    state.savedNotesObj[noteObject.title] = noteObject
+    state.savedNotesObj[noteObject.title].markdown = defaultMarkdownText
   },
 
   updateNoteObject (state, newNoteObject) {
     // Populate new note with newNoteObject & Transfer the markdown
-    state.allSavedNotes[newNoteObject.title] = newNoteObject
-    state.allSavedNotes[newNoteObject.title].markdown = state.allSavedNotes[state.selectedNoteRef].markdown
-    delete state.allSavedNotes[state.selectedNoteRef]
+    state.savedNotesObj[newNoteObject.title] = newNoteObject
+    state.savedNotesObj[newNoteObject.title].markdown = state.savedNotesObj[state.selectedNoteRef].markdown
+    delete state.savedNotesObj[state.selectedNoteRef]
   },
 
   updateAllNotesRefObject (state) {
-    state.allNoteRefs = Object.keys(state.allSavedNotes).reverse()
+    state.allSelectedNoteRefs = Object.keys(state.savedNotesObj)
   },
 
   addNoteBookmark (state, selectedNoteRef) {
-    const arraySet = new Set(...state.allBookmarkedNoteRefs)
+    const arraySet = new Set(...state.bookmarkedNotesRefsArray)
     const hasNotBookmarked = !arraySet.has(selectedNoteRef)
 
     if (hasNotBookmarked) {
-      state.allBookmarkedNoteRefs.unshift(selectedNoteRef)
+      state.bookmarkedNotesRefsArray.unshift(selectedNoteRef)
     }
   }
 }
 
 // Getters
 const getters = {
-  hasInitalVisit: state => {
-    return state.isUsersInitalVisit
-  },
-
   getCurrentNoteSort: state => {
     return state.selectedNoteSort
   },
 
   getAllNotesObj: state => {
-    return state.allSavedNotes
+    return state.savedNotesObj
   },
 
   getAllNoteRefs: state => {
-    return state.allNoteRefs
+    return state.allSelectedNoteRefs
   },
 
   getAllBookmarkedRefs: state => {
-    return state.allBookmarkedNoteRefs
+    return state.bookmarkedNotesRefsArray
   },
 
   getCurrentNoteRef: state => {
@@ -174,7 +156,7 @@ const getters = {
   },
 
   getSelectedNote: state => {
-    const parsedNote = state.allSavedNotes[state.selectedNoteRef]
+    const parsedNote = state.savedNotesObj[state.selectedNoteRef]
     return parsedNote
   }
 }

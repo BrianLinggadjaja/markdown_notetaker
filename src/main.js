@@ -1,28 +1,48 @@
-// Module Imports
+// Javascript Libraries
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import VueRouter from 'vue-router'
-import GlobalStore from './store'
 import routes from './routes'
-import Buefy from 'buefy'
 import App from './App.vue'
 
-// Font Awesome
-import { dom, library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage, faEdit } from '@fortawesome/free-solid-svg-icons'
+// Import VueX Store
+import GlobalStore from './store'
 
+// Style Libraries
+import Buefy from 'buefy'
+import { dom, library } from '@fortawesome/fontawesome-svg-core'
+import { faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// Global Style
+import '@/scss/_base.scss'
+
+// Font Awesome
 dom.watch()
-library.add(faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage, faEdit)
+library.add(faExclamationCircle, faTimesCircle, faBook, faBookmark, faFileAlt, faTags, faSearch, faHashtag, faHeading, faBold, faItalic, faMinus, faQuoteLeft, faListUl, faListOl, faEye, faColumns, faArrowsAlt, faLink, faImage)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-// Mounted Modules
+// Vue Configuration
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Buefy)
+Vue.config.productionTip = false
 
-// Vuex Persistent State Initalization
+// Vue Router Instance
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
+
+// Updates Vue Router Title on "Page" Change
+router.afterEach(to => {
+  Vue.nextTick(() => {
+    document.title = to.meta.title
+  })
+})
+
+// Check if development mode and provide debug boolean
 const debug = process.env.NODE_ENV !== 'production'
 GlobalStore.strict = debug
 
@@ -30,29 +50,15 @@ const persistedStore = new VuexPersistence({
   storage: window.localStorage
 })
 
-GlobalStore.plugins = [persistedStore.plugin] // Attach Plugins to Vuex store
+// Attach Plugins to Vuex store
+GlobalStore.plugins = [persistedStore.plugin]
 
-// Vuex Initalization
+// Vuex Global Store (State Management) Initalization
 const store = new Vuex.Store(GlobalStore)
-
-// Vue Router
-const router = new VueRouter({
-  mode: 'history',
-  routes
-})
-
-router.afterEach(to => {
-  Vue.nextTick(() => {
-    document.title = to.meta.title // Updates Vue Router Title on "Page" Change
-  })
-})
 
 // Vue Instance
 new Vue({
-  store,
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
-
-// Turn off production tip on dev
-Vue.config.productionTip = false
