@@ -1,7 +1,7 @@
-# Simple Markdown Notetaker
+# Simple Markdown Notetaker v1
 
-## HOSTED ON GITHUB PAGES
-https://simple-markdown-notetaker.github.io/
+## OLD V1 Source Code
+Created using **SimpleMDE** Library, **Vue.js 2**, & **Buefy Component Library**.
 
 ## Project Setup
 
