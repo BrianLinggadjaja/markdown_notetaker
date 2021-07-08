@@ -1,46 +1,27 @@
 <template>
-  <div id="app" class="columns">
-    <note-sorter />
-    <router-view></router-view>
-  </div>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
-<script>
-import { mapActions, mapGetters } from 'vuex'
-import NoteSorter from './components/NoteSorter'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import HelloWorld from './components/HelloWorld.vue'
 
-export default {
+export default defineComponent({
+  name: 'App',
   components: {
-    NoteSorter
-  },
-
-  computed: {
-    ...mapGetters({
-      hasInitalVisit: 'hasInitalVisit'
-    })
-  },
-
-  mounted () {
-    if (this.hasInitalVisit) {
-      this.$store.dispatch('addInitalNote')
-    }
-  },
-
-  methods: {
-    ...mapActions([
-      'addInitalNote'
-    ])
+    HelloWorld
   }
-}
+})
 </script>
 
-<style lang="scss" scoped>
+<style>
 #app {
-  height: 100vh;
-  margin-bottom: 0;
-}
-
-.columns {
-  margin: 0;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
