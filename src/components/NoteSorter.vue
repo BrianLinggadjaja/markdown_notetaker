@@ -1,5 +1,5 @@
 <template>
-  <div id="NoteSorter"></div>
+  <div id="noteSorter"></div>
 </template>
 
 <script lang="ts">

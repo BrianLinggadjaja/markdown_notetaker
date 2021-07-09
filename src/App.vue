@@ -2,6 +2,7 @@
   <application-header />
   <note-sorter />
   <note-selector />
+  <editor-preview />
 </template>
 
 <script lang="ts">
