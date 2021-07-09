@@ -1,6 +1,6 @@
 <template>
-  <div id="applicationHeader" class="bg-primary text-accent-lighter p-1">
-    <h1>Simple Markdown Notetaker</h1>
+  <div id="applicationHeader" class="bg-primary text-accent-lighter p-2">
+    <img class="w-32" alt="Quick MD Note" src="./../assets/logo.png" />
   </div>
 </template>
 
