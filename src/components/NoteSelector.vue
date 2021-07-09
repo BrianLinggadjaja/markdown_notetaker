@@ -1,5 +1,7 @@
 <template>
-  <div id="noteSelector"></div>
+  <div id="noteSelector" class="bg-primary">
+    <h2>Note Selector</h2>
+  </div>
 </template>
 
 <script lang="ts">

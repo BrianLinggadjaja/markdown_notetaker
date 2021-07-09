@@ -1,5 +1,7 @@
 <template>
-  <div id="editorPreview"></div>
+  <div id="editorPreview" class="bg-primary-lighter">
+    <h2>Editor Preview</h2>
+  </div>
 </template>
 
 <script lang="ts">

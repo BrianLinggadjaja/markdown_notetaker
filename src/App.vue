@@ -1,8 +1,11 @@
 <template>
-  <application-header />
-  <note-sorter />
-  <note-selector />
-  <editor-preview />
+  <div class="flex flex-col h-full">
+    <application-header />
+    <div class="flex flex-row md:flex-nowrap flex-grow text-gray-300">
+      <note-selector class="flex-grow-0 w-1/4 lg:w-56" />
+      <editor-preview class="flex-grow" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,15 +13,15 @@ import { defineComponent, onBeforeMount } from 'vue'
 
 // Component Imports
 import ApplicationHeader from './components/ApplicationHeader.vue'
-import NoteSorter from './components/NoteSorter.vue'
 import NoteSelector from './components/NoteSelector.vue'
+import EditorPreview from './components/EditorPreview.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     ApplicationHeader,
-    NoteSorter,
-    NoteSelector
+    NoteSelector,
+    EditorPreview
   },
 
   // Theme initalization

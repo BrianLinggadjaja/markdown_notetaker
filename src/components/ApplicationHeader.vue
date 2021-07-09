@@ -1,6 +1,6 @@
 <template>
-  <div id="applicationHeader" class="bg-primary text-accent-lighter p-2">
-    <img class="w-32" alt="Quick MD Note" src="./../assets/logo.png" />
+  <div id="applicationHeader" class="bg-primary text-accent-lighter p-2 pb-1">
+    <img class="w-24" alt="Quick MD Note" src="./../assets/logo.png" />
   </div>
 </template>
 

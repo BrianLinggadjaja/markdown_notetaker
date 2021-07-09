@@ -22,13 +22,13 @@ module.exports = {
       red: colors.rose,
       yellow: colors.amber,
       primary: {
-        lighter: '#000000',
-        DEFAULT: '#191e2d',
-        darker: '#009eeb',
+        lighter: '#191e2d',
+        DEFAULT: '#0a0f1e',
+        darker: '#0a0f1e',
       },
       accent: {
-        lighter: '#e4506b',
-        DEFAULT: '#e13c5a',
+        lighter: '#E4506B',
+        DEFAULT: '#E13C5A',
         darker: '#009eeb',
       },
     }
